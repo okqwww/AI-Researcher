@@ -1,0 +1,93 @@
+```latex
+\section{Proposed Method}
+% The proposed method introduces a novel architecture for Vector Quantized Variational Autoencoders (VQ-VAE) enhanced by a Rotation-Rescaling Transform (RRT). 
+% The primary goal is to improve gradient propagation through quantization layers, ultimately enhancing representation capabilities and reconstruction quality of the model.
+% The framework is composed of three main components: an Encoder, a Vector Quantizer, and a Decoder. 
+% These components interact cohesively to transform input data into high-fidelity reconstructs effectively.
+%
+% Input data $\xrightarrow{\text{Encoder}} z_e \xrightarrow{\text{Quantizer}} z_q \xrightarrow{\text{Decoder}} \hat{x}$.
+
+\subsection{Encoder}
+% The Encoder's role is to transform raw images into effective latent representations suitable for quantization. 
+% It is designed to extract crucial features that underpin overall model performance. The output from the Encoder serves as the input for the Vector Quantizer.
+%
+% Input: Raw images ($x$);
+% Output: Latent representations ($z_e$).
+%
+% Workflow: 
+% Raw image $x \xrightarrow{\text{Encoder}} z_e$.
+
+\subsubsection{Convolutional Layers}
+% These layers progressively extract spatial hierarchies from the input images, facilitating the model's ability to learn detailed feature maps essential for subsequent layers.
+%
+% Input: Raw images ($x$);
+% Output: Feature maps ($h$).
+%
+% Workflow: 
+% Raw image $x \xrightarrow{\text{Convolutional Layers}} h$.
+
+\subsubsection{Residual Stack}
+% The Residual Stack leverages skip connections to enhance gradient flow in deeper layers, improving the quality of the latent representations produced.
+%
+% Input: Feature maps ($h$);
+% Output: Enhanced latent representations ($z_e$).
+%
+% Workflow: 
+% Feature maps $h \xrightarrow{\text{Residual Stack}} z_e$.
+
+\subsection{Vector Quantizer}
+% The Vector Quantizer's primary function is to discretize continuous latent representations into distinct embeddings. 
+% It employs Exponential Moving Average (EMA) updates to optimize the training process, contributing to more stable gradient flow during backpropagation.
+%
+% Input: Latent representations ($z_e$);
+% Output: Quantized representations ($z_q$), along with quantization losses and statistics.
+%
+% Workflow: 
+% Latent representation $z_e \xrightarrow{\text{Quantizer}} z_q, vq\_loss, stats$.
+
+\subsubsection{Embedding Updates}
+% This mechanism updates the codebook of embeddings based on usage frequency through EMA techniques, allowing adaptation to input data distribution.
+%
+% Input: Latent representations ($z_e$);
+% Output: Updated embeddings.
+%
+% Workflow: 
+% Latent representations $z_e \xrightarrow{\text{Embedding Updates}} \text{Updated Embeddings}$.
+
+\subsubsection{RRT Gradient Transport}
+% The Rotation-Rescaling Transform (RRT) improves gradient flow across quantization layers by implementing transformations that preserve angles, enabling effective backpropagation of gradients in non-differentiable settings.
+%
+% Input: Quantized representations ($z_q$);
+% Output: Transformed gradients for effective backpropagation.
+%
+% Workflow: 
+% Quantized representation $z_q \xrightarrow{\text{RRT}} \text{Transformed Gradients}$.
+
+\subsection{Decoder}
+% The Decoder is responsible for reconstructing images from the quantized representations, ensuring that outputs closely match the original input data.
+% It acts as the concluding stage in the generative modeling process, leveraging learned latent features to perform high-fidelity reconstructions.
+%
+% Input: Quantized representations ($z_q$);
+% Output: Reconstructed images ($\hat{x}$).
+%
+% Workflow: 
+% Quantized representation $z_q \xrightarrow{\text{Decoder}} \hat{x}$.
+
+\subsubsection{Convolutional Layers in Decoder}
+% Similar to the Encoder, this component utilizes convolutional layers to increase the spatial dimensions of the quantized representations, effectively reconstructing them into original image dimensions.
+%
+% Input: Quantized representations ($z_q$);
+% Output: Intermediate feature maps for reconstruction ($\hat{h}$).
+%
+% Workflow: 
+% Quantized representation $z_q \xrightarrow{\text{Convolutional Layers}} \hat{h}$.
+
+\subsubsection{Output Layer}
+% The final step in the Decoder, the Output Layer synthesizes the processed information to generate final reconstructed images, matching original input dimensions and content.
+%
+% Input: Intermediate feature maps ($\hat{h}$);
+% Output: Final reconstructed images ($\hat{x}$).
+%
+% Workflow: 
+% Feature maps $\hat{h} \xrightarrow{\text{Output Layer}} \hat{x}$.
+```

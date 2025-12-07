@@ -1,0 +1,341 @@
+{
+    "messages": [
+        {
+            "content": null,
+            "role": "assistant",
+            "tool_calls": [
+                {
+                    "function": {
+                        "arguments": "{\"command\": \"git clone https://github.com/airalcorn2/vqvae-pytorch.git /workplace/vqvae-pytorch\"}",
+                        "name": "execute_command"
+                    },
+                    "id": "call_tFRZXjYpu9ii9oxnpHDZz61w",
+                    "type": "function"
+                },
+                {
+                    "function": {
+                        "arguments": "{\"command\": \"git clone https://github.com/dome272/VQGAN-pytorch.git /workplace/VQGAN-pytorch\"}",
+                        "name": "execute_command"
+                    },
+                    "id": "call_DL4YgC0L40Z9U2rNCZd8IdMH",
+                    "type": "function"
+                },
+                {
+                    "function": {
+                        "arguments": "{\"command\": \"git clone https://github.com/kuc2477/pytorch-vae.git /workplace/pytorch-vae\"}",
+                        "name": "execute_command"
+                    },
+                    "id": "call_yck1K4db1zd6DFAwj0ZLnhVY",
+                    "type": "function"
+                },
+                {
+                    "function": {
+                        "arguments": "{\"command\": \"git clone https://github.com/andregaio/clip.git /workplace/clip\"}",
+                        "name": "execute_command"
+                    },
+                    "id": "call_5QTOYAlG4Faq9LscdV6s8Ar5",
+                    "type": "function"
+                },
+                {
+                    "function": {
+                        "arguments": "{\"command\": \"git clone https://github.com/Westlake-AI/VQGAN.git /workplace/VQGAN\"}",
+                        "name": "execute_command"
+                    },
+                    "id": "call_j2uf7NzdYk2X3jJE8BqPa39k",
+                    "type": "function"
+                }
+            ],
+            "function_call": null,
+            "sender": "Prepare Agent"
+        },
+        {
+            "role": "tool",
+            "tool_call_id": "call_tFRZXjYpu9ii9oxnpHDZz61w",
+            "name": "execute_command",
+            "content": "[The output of the tool `execute_command` showing in the interactive terminal]\nTerminal viewport position: Showing page 1 of 1.\n==============================================\nCloning into '/workplace/vqvae-pytorch'...\n\n==============================================\n"
+        },
+        {
+            "role": "tool",
+            "tool_call_id": "call_DL4YgC0L40Z9U2rNCZd8IdMH",
+            "name": "execute_command",
+            "content": "[The output of the tool `execute_command` showing in the interactive terminal]\nTerminal viewport position: Showing page 1 of 1.\n==============================================\nCloning into '/workplace/VQGAN-pytorch'...\n\n==============================================\n"
+        },
+        {
+            "role": "tool",
+            "tool_call_id": "call_yck1K4db1zd6DFAwj0ZLnhVY",
+            "name": "execute_command",
+            "content": "[The output of the tool `execute_command` showing in the interactive terminal]\nTerminal viewport position: Showing page 1 of 1.\n==============================================\nCloning into '/workplace/pytorch-vae'...\n\n==============================================\n"
+        },
+        {
+            "role": "tool",
+            "tool_call_id": "call_5QTOYAlG4Faq9LscdV6s8Ar5",
+            "name": "execute_command",
+            "content": "[The output of the tool `execute_command` showing in the interactive terminal]\nTerminal viewport position: Showing page 1 of 1.\n==============================================\nCloning into '/workplace/clip'...\n\n==============================================\n"
+        },
+        {
+            "role": "tool",
+            "tool_call_id": "call_j2uf7NzdYk2X3jJE8BqPa39k",
+            "name": "execute_command",
+            "content": "[The output of the tool `execute_command` showing in the interactive terminal]\nTerminal viewport position: Showing page 1 of 1.\n==============================================\nCloning into '/workplace/VQGAN'...\n\n==============================================\n"
+        },
+        {
+            "content": null,
+            "role": "assistant",
+            "tool_calls": [
+                {
+                    "function": {
+                        "arguments": "{\"directory\":\"/workplace/vqvae-pytorch\"}",
+                        "name": "gen_code_tree_structure"
+                    },
+                    "id": "call_GRsnDxPXZBHydENyvlMqmnvX",
+                    "type": "function"
+                }
+            ],
+            "function_call": null,
+            "sender": "Prepare Agent"
+        },
+        {
+            "role": "tool",
+            "tool_call_id": "call_GRsnDxPXZBHydENyvlMqmnvX",
+            "name": "gen_code_tree_structure",
+            "content": "[The output of the tool `gen_code_tree_structure` showing in the interactive terminal]\nTerminal viewport position: Showing page 1 of 1.\n==============================================\n/workplace/vqvae-pytorch\n├── README.md\n├── VQVAE_LICENSE\n├── recon.jpg\n├── train_vqvae.py\n├── true.jpg\n└── vqvae.py\n\n0 directories, 6 files\n\n==============================================\n"
+        },
+        {
+            "content": null,
+            "role": "assistant",
+            "tool_calls": [
+                {
+                    "function": {
+                        "arguments": "{\"directory\":\"/workplace/VQGAN-pytorch\"}",
+                        "name": "gen_code_tree_structure"
+                    },
+                    "id": "call_RGz00Epo1fyTlnOhepYUtJg3",
+                    "type": "function"
+                }
+            ],
+            "function_call": null,
+            "sender": "Prepare Agent"
+        },
+        {
+            "role": "tool",
+            "tool_call_id": "call_RGz00Epo1fyTlnOhepYUtJg3",
+            "name": "gen_code_tree_structure",
+            "content": "[The output of the tool `gen_code_tree_structure` showing in the interactive terminal]\nTerminal viewport position: Showing page 1 of 1.\n==============================================\n/workplace/VQGAN-pytorch\n├── LICENSE\n├── README.md\n├── codebook.py\n├── decoder.py\n├── discriminator.py\n├── encoder.py\n├── helper.py\n├── lpips.py\n├── mingpt.py\n├── sample_transformer.py\n├── training_transformer.py\n├── training_vqgan.py\n├── transformer.py\n├── utils.py\n└── vqgan.py\n\n0 directories, 15 files\n\n==============================================\n"
+        },
+        {
+            "content": null,
+            "role": "assistant",
+            "tool_calls": [
+                {
+                    "function": {
+                        "arguments": "{\"directory\":\"/workplace/pytorch-vae\"}",
+                        "name": "gen_code_tree_structure"
+                    },
+                    "id": "call_Tjfqkc4LHors0FvJkM6OQJ4I",
+                    "type": "function"
+                }
+            ],
+            "function_call": null,
+            "sender": "Prepare Agent"
+        },
+        {
+            "role": "tool",
+            "tool_call_id": "call_Tjfqkc4LHors0FvJkM6OQJ4I",
+            "name": "gen_code_tree_structure",
+            "content": "[The output of the tool `gen_code_tree_structure` showing in the interactive terminal]\nTerminal viewport position: Showing page 1 of 1.\n==============================================\n/workplace/pytorch-vae\n├── LICENSE\n├── README.md\n├── arts\n│   └── vae.png\n├── data.py\n├── main.py\n├── model.py\n├── requirements.txt\n├── train.py\n├── utils.py\n└── visual.py\n\n1 directory, 10 files\n\n==============================================\n"
+        },
+        {
+            "content": null,
+            "role": "assistant",
+            "tool_calls": [
+                {
+                    "function": {
+                        "arguments": "{\"directory\":\"/workplace/clip\"}",
+                        "name": "gen_code_tree_structure"
+                    },
+                    "id": "call_w5u2q0ITs9U0EcpvgINr0UeW",
+                    "type": "function"
+                }
+            ],
+            "function_call": null,
+            "sender": "Prepare Agent"
+        },
+        {
+            "role": "tool",
+            "tool_call_id": "call_w5u2q0ITs9U0EcpvgINr0UeW",
+            "name": "gen_code_tree_structure",
+            "content": "[The output of the tool `gen_code_tree_structure` showing in the interactive terminal]\nTerminal viewport position: Showing page 1 of 1.\n==============================================\n/workplace/clip\n├── LICENSE\n├── README.md\n├── assets\n│   ├── chart.png\n│   └── logo.jpeg\n├── clip\n│   ├── __init__.py\n│   ├── config.py\n│   ├── data.py\n│   ├── infer.py\n│   ├── loss.py\n│   ├── model.py\n│   ├── modules\n│   │   ├── __init__.py\n│   │   ├── image_encoder.py\n│   │   ├── projection_head.py\n│   │   └── text_encoder.py\n│   ├── train.py\n│   └── utils.py\n└── pyproject.toml\n\n3 directories, 17 files\n\n==============================================\n"
+        },
+        {
+            "content": null,
+            "role": "assistant",
+            "tool_calls": [
+                {
+                    "function": {
+                        "arguments": "{\"directory\":\"/workplace/VQGAN\"}",
+                        "name": "gen_code_tree_structure"
+                    },
+                    "id": "call_ILWOSzq9qpyTDiDKB45wBu3H",
+                    "type": "function"
+                }
+            ],
+            "function_call": null,
+            "sender": "Prepare Agent"
+        },
+        {
+            "role": "tool",
+            "tool_call_id": "call_ILWOSzq9qpyTDiDKB45wBu3H",
+            "name": "gen_code_tree_structure",
+            "content": "[The output of the tool `gen_code_tree_structure` showing in the interactive terminal]\nTerminal viewport position: Showing page 1 of 1.\n==============================================\n/workplace/VQGAN\n├── LICENSE\n├── README.md\n├── assets\n│   ├── birddrawnbyachild.png\n│   ├── coco_scene_images_training.svg\n│   ├── drin.jpg\n│   ├── faceshq.jpg\n│   ├── first_stage_mushrooms.png\n│   ├── first_stage_squirrels.png\n│   ├── imagenet.png\n│   ├── lake_in_the_mountains.png\n│   ├── mountain.jpeg\n│   ├── scene_images_samples.svg\n│   ├── stormy.jpeg\n│   ├── sunset_and_ocean.jpg\n│   └── teaser.png\n├── configs\n│   ├── coco_cond_stage.yaml\n│   ├── coco_scene_images_transformer.yaml\n│   ├── custom_vqgan.yaml\n│   ├── drin_transformer.yaml\n│   ├── faceshq_transformer.yaml\n│   ├── faceshq_vqgan.yaml\n│   ├── imagenet_vqgan.yaml\n│   ├── imagenetdepth_vqgan.yaml\n│   ├── open_images_scene_images_transformer.yaml\n│   └── sflckr_cond_stage.yaml\n├── environment.yaml\n├── main.py\n├── requirements\n│   ├── docs.txt\n│   ├── optional.txt\n│   ├── readthedocs.txt\n│   ├── runtime.txt\n│   └── tests.txt\n├── setup.py\n├── tools\n│   ├── extract_depth.py\n│   ├── extract_segmentation.py\n│   ├── extract_submodel.py\n│   ├── make_samples.py\n│   ├── make_scene_samples.py\n│   ├── sample_conditional.py\n│   └── sample_fast.py\n└── vqgan\n    ├── __init__.py\n    ├── core\n    │   ├── __init__.py\n    │   ├── lr_scheduler.py\n    │   └── test_tube.py\n    ├── datasets\n    │   ├── __init__.py\n    │   ├── ade20k.py\n    │   ├── annotated_objects_coco.py\n    │   ├── annotated_objects_dataset.py\n    │   ├── annotated_objects_open_images.py\n    │   ├── base.py\n    │   ├── coco.py\n    │   ├── conditional_builder\n    │   │   ├── objects_bbox.py\n    │   │   ├── objects_center_points.py\n    │   │   └── utils.py\n    │   ├── custom.py\n    │   ├── dataloader.py\n    │   ├── faceshq.py\n    │   ├── helper_types.py\n    │   ├── image_transforms.py\n    │   ├── imagenet.py\n    │   ├── open_images_helper.py\n    │   ├── sflckr.py\n    │   └── utils.py\n    ├── models\n    │   ├── __init__.py\n    │   ├── cond_transformer.py\n    │   ├── dummy_cond_stage.py\n    │   └── vqgan.py\n    ├── modules\n    │   ├── __init__.py\n    │   ├── diffusionmodules\n    │   │   └── model.py\n    │   ├── discriminator\n    │   │   └── model.py\n    │   ├── losses\n    │   │   ├── __init__.py\n    │   │   ├── lpips.py\n    │   │   ├── segmentation.py\n    │   │   └── vqperceptual.py\n    │   ├── misc\n    │   │   └── coord.py\n    │   ├── transformer\n    │   │   ├── mingpt.py\n    │   │   └── permuter.py\n    │   ├── util.py\n    │   └── vqvae\n    │       └── quantize.py\n    ├── utils\n    │   ├── __init__.py\n    │   ├── main_utils.py\n    │   └── model_utils.py\n    └── version.py\n\n17 directories, 83 files\n\n==============================================\n"
+        },
+        {
+            "content": null,
+            "role": "assistant",
+            "tool_calls": [
+                {
+                    "function": {
+                        "arguments": "{\"file_path\": \"/workplace/vqvae-pytorch/README.md\"}",
+                        "name": "read_file"
+                    },
+                    "id": "call_wfkKGo5zXMSQ2SMI6rMB1xnJ",
+                    "type": "function"
+                },
+                {
+                    "function": {
+                        "arguments": "{\"file_path\": \"/workplace/VQGAN-pytorch/README.md\"}",
+                        "name": "read_file"
+                    },
+                    "id": "call_uKSRt33SRmJrfZS15WU0ielG",
+                    "type": "function"
+                },
+                {
+                    "function": {
+                        "arguments": "{\"file_path\": \"/workplace/pytorch-vae/README.md\"}",
+                        "name": "read_file"
+                    },
+                    "id": "call_Ff0eRlwjbNNQAsPLvq4KJ4WY",
+                    "type": "function"
+                },
+                {
+                    "function": {
+                        "arguments": "{\"file_path\": \"/workplace/clip/README.md\"}",
+                        "name": "read_file"
+                    },
+                    "id": "call_BTZuw6gbiHKCAakYBAM6PD8W",
+                    "type": "function"
+                },
+                {
+                    "function": {
+                        "arguments": "{\"file_path\": \"/workplace/VQGAN/README.md\"}",
+                        "name": "read_file"
+                    },
+                    "id": "call_6Rnji2LVEEMlSGo5RsHGmiSs",
+                    "type": "function"
+                }
+            ],
+            "function_call": null,
+            "sender": "Prepare Agent"
+        },
+        {
+            "role": "tool",
+            "tool_call_id": "call_wfkKGo5zXMSQ2SMI6rMB1xnJ",
+            "name": "read_file",
+            "content": "[The output of the tool `read_file` showing in the interactive terminal]\nTerminal viewport position: Showing page 1 of 1.\n==============================================\n# PyTorch VQ-VAE\n\n[![Open VQ-VAE in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1n6rPRkon0Bc-PyrXwDDphlRjrqwdV9jd)\n\nThis is a minimal PyTorch implementation of the VQ-VAE model described in \"[Neural Discrete Representation Learning](https://arxiv.org/abs/1711.00937)\".\nI tried to stay as close to [the official DeepMind implementation](https://github.com/deepmind/sonnet/blob/v2/examples/vqvae_example.ipynb) as possible while still being PyTorch-y, and I tried to add comments in the code referring back to the relevant sections/equations in the paper.\n\nTo train the model on the CIFAR-10 dataset using the same hyperparameters described in the paper, run:\n\n```bash\npython3 train_vqvae.py\n```\n\nIt should only take a few minutes on a modern GPU (a Colab notebook can be found [here](https://colab.research.google.com/drive/1n6rPRkon0Bc-PyrXwDDphlRjrqwdV9jd?usp=sharing)).\nAfter training, the script saves the following two images:\n\n**Validation Set Samples**\n\n![](true.jpg)\n\n**Reconstructions**\n\n![](recon.jpg)\n\n==============================================\n"
+        },
+        {
+            "role": "tool",
+            "tool_call_id": "call_uKSRt33SRmJrfZS15WU0ielG",
+            "name": "read_file",
+            "content": "[The output of the tool `read_file` showing in the interactive terminal]\nYou previously visited this page of terminal 0 seconds ago.\nTerminal viewport position: Showing page 1 of 1.\n==============================================\n## Note:\nCode Tutorial + Implementation Tutorial\n\n<a href=\"https://www.youtube.com/watch?v=wcqLFDXaDO8\">\n   <img alt=\"Qries\" src=\"https://user-images.githubusercontent.com/61938694/154516539-90e2d4d0-4383-41f4-ad32-4c6d67bd2442.jpg\"\n   width=\"300\">\n</a>\n\n<a href=\"https://www.youtube.com/watch?v=_Br5WRwUz_U\">\n   <img alt=\"Qries\" src=\"https://user-images.githubusercontent.com/61938694/154628085-eede604f-442d-4bdb-a1ed-5ad3264e5aa0.jpg\"\n   width=\"300\">\n</a>\n\n# VQGAN\nVector Quantized Generative Adversarial Networks (VQGAN) is a generative model for image modeling. It was introduced in [Taming Transformers for High-Resolution Image Synthesis](https://arxiv.org/abs/2012.09841). The concept is build upon two stages. The first stage learns in an autoencoder-like fashion by encoding images into a low-dimensional latent space, then applying vector quantization by making use of a codebook. Afterwards, the quantized latent vectors are projected back to the original image space by using a decoder. Encoder and Decoder are fully convolutional. The second stage is learning a transformer for the latent space. Over the course of training it learns which codebook vectors go along together and which not. This can then be used in an autoregressive fashion to generate before unseen images from the data distribution.\n\n## Results for First Stage (Reconstruction):\n\n### 1. Epoch:\n\n<img src=\"https://user-images.githubusercontent.com/61938694/154057590-3f457a92-42dd-4912-bb1e-9278a6ae99cc.jpg\" width=\"500\">\n\n### 50. Epoch:\n\n<img src=\"https://user-images.githubusercontent.com/61938694/154057511-266fa6ce-5c45-4660-b669-1dca0841823f.jpg\" width=\"500\">\n\n## Results for Second Stage (Generating new Images):\nOriginal Left | Reconstruction Middle Left | Completion Middle Right | New Image Right\n### 1. Epoch:\n\n<img src=\"https://user-images.githubusercontent.com/61938694/154058167-9627c71c-d180-449a-ba18-19a85843cee2.jpg\" width=\"500\">\n\n### 100. Epoch:\n\n<img src=\"https://user-images.githubusercontent.com/61938694/154058563-700292b6-8fbb-4ba1-b4d7-5955030e4489.jpg\" width=\"500\">\n\nNote: Let the model train for even longer to get better results.\n\n<hr>\n\n## Train VQGAN on your own data:\n### Training First Stage\n1. (optional) Configure Hyperparameters in ```training_vqgan.py```\n2. Set path to dataset in ```training_vqgan.py```\n3. ```python training_vqgan.py```\n\n### Training Second Stage\n1. (optional) Configure Hyperparameters in ```training_transformer.py```\n2. Set path to dataset in ```training_transformer.py```\n3. ```python training_transformer.py```\n\n## Citation\n```bibtex\n@misc{esser2021taming,\n      title={Taming Transformers for High-Resolution Image Synthesis},\n      author={Patrick Esser and Robin Rombach and Björn Ommer},\n      year={2021},\n      eprint={2012.09841},\n      archivePrefix={arXiv},\n      primaryClass={cs.CV}\n}\n```\n\n==============================================\n"
+        },
+        {
+            "role": "tool",
+            "tool_call_id": "call_Ff0eRlwjbNNQAsPLvq4KJ4WY",
+            "name": "read_file",
+            "content": "[The output of the tool `read_file` showing in the interactive terminal]\nYou previously visited this page of terminal 0 seconds ago.\nTerminal viewport position: Showing page 1 of 1.\n==============================================\n# VAE PyTorch Implementation\n\nPyTorch implementation of [Auto-Encoding Variational Bayes, arxiv:1312.6114](https://arxiv.org/abs/1312.6114)\n\n![vae-graphical-model](./arts/vae.png)\n\n## Installation\n\n```\n$ git clone https://github.com/kuc2477/pytorch-vae && cd pytorch-vae\n$ pip install -r requirements.txt\n```\n\n## CLI\n\nImplementation CLI is provided by `main.py`\n\n#### Usage\n```\n$ ./main.py --help\n$ usage: VAE PyTorch implementation [-h] [--dataset {mnist,cifar10,cifar100}]\n                                  [--kernel-num KERNEL_NUM] [--z-size Z_SIZE]\n                                  [--epochs EPOCHS] [--batch-size BATCH_SIZE]\n                                  [--sample-size SAMPLE_SIZE] [--lr LR]\n                                  [--weight-decay WEIGHT_DECAY]\n                                  [--loss-log-interval LOSS_LOG_INTERVAL]\n                                  [--image-log-interval IMAGE_LOG_INTERVAL]\n                                  [--resume] [--checkpoint-dir CHECKPOINT_DIR]\n                                  [--sample-dir SAMPLE_DIR] [--no-gpus]\n                                  (--test | --train)\n\noptional arguments:\n  -h, --help            show this help message and exit\n  --dataset {mnist,cifar10,cifar100}\n  --kernel-num KERNEL_NUM\n  --z-size Z_SIZE\n  --epochs EPOCHS\n  --batch-size BATCH_SIZE\n  --sample-size SAMPLE_SIZE\n  --lr LR\n  --weight-decay WEIGHT_DECAY\n  --loss-log-interval LOSS_LOG_INTERVAL\n  --image-log-interval IMAGE_LOG_INTERVAL\n  --resume\n  --checkpoint-dir CHECKPOINT_DIR\n  --sample-dir SAMPLE_DIR\n  --no-gpus\n  --test\n  --train\n```\n\n#### Train\n```\n./main.py --train\n```\n\n#### Test\n```\n./main.py --test\n```\n\n## Reference\n- [Auto-Encoding Variational Bayes, arxiv:1312.6114](https://arxiv.org/abs/1312.6114)\n\n## Author\nHa Junsoo / [@kuc2477](https://github.com/kuc2477) / MIT License\n\n==============================================\n"
+        },
+        {
+            "role": "tool",
+            "tool_call_id": "call_BTZuw6gbiHKCAakYBAM6PD8W",
+            "name": "read_file",
+            "content": "[The output of the tool `read_file` showing in the interactive terminal]\nTerminal viewport position: Showing page 1 of 1.\n==============================================\n# clip\nA PyTorch implementation of [Learning Transferable Visual Models From Natural Language Supervision](https://arxiv.org/abs/2103.00020)\n\n<img src=\"assets/logo.jpeg\">\n\n### Installation\n```\ngit clone https://github.com/andregaio/clip.git\ncd clip\nconda create -n clip python=3.8\nconda activate clip\npip install -e .\n```\n### Models\n| Name        | Image encoder |      Text encoder       |\n| :---------- |    :------:   |         :------:        |\n| clip        |   resnet50    | distilbert-base-uncased |\n\n### Dataset\n- [Flickr30K](https://www.kaggle.com/datasets/hsankesara/flickr-image-dataset?select=flickr30k_images)\n\n### Training\n```\npython clip/train.py\n```\n\n### Inference\n```\npython clip/infer.py\n```\n\n### [Results](https://wandb.ai/andregaio/clip)\n<div align=\"center\">\n\n<img src=\"assets/chart.png\">\n\n</div>\n\n### Notes\n - The code has been heavily borrowed from https://github.com/moein-shariatnia/OpenAI-CLIP\n==============================================\n"
+        },
+        {
+            "role": "tool",
+            "tool_call_id": "call_6Rnji2LVEEMlSGo5RsHGmiSs",
+            "name": "read_file",
+            "content": "[The output of the tool `read_file` showing in the interactive terminal]\nYou previously visited this page of terminal 0 seconds ago.\nTerminal viewport position: Showing page 1 of 4.\n[NOTE] The output of the tool `read_file`, you can use `terminal_page_up` to scroll up and `terminal_page_down` to scroll down. If there are many pages with meaningless content like progress bar or output of generating directory structure when there are many datasets in the directory, you can use `terminal_page_to` to move the viewport to the end of terminal where the meaningful content is.\n==============================================\n# VQ-GAN for Natural Data Modality\n\nThis project aims to tokenize various natural data into codebooks for subsequent advanced tasks. VQ-GAN is implemented based on [**Taming Transformers for High-Resolution Image Synthesis**](https://compvis.github.io/taming-transformers/). This work combines the efficiancy of convolutional approaches with the expressivity of transformers by introducing a convolutional VQGAN, which learns a codebook of context-rich visual parts, whose composition is modeled with an autoregressive transformer.\n\n![teaser](assets/teaser.png)\n[arXiv](https://arxiv.org/abs/2012.09841) | [BibTeX](#bibtex) | [Project Page](https://compvis.github.io/taming-transformers/)\n\n## Requirements\nA suitable [conda](https://conda.io/) environment named `taming` can be created and activated with:\n\n```\nconda env create -f environment.yaml\nconda activate vqgan\npython setup.py develop\n```\n\n## Overview of pretrained models\nThe following table provides an overview of all models that are currently available.\nFID scores were evaluated using [torch-fidelity](https://github.com/toshas/torch-fidelity).\nFor reference, we also include a link to the recently released autoencoder of the [DALL-E](https://github.com/openai/DALL-E) model.\nSee the corresponding [colab\nnotebook](https://colab.research.google.com/github/CompVis/taming-transformers/blob/master/scripts/reconstruction_usage.ipynb)\nfor a comparison and discussion of reconstruction capabilities.\n\n| Dataset  | FID vs train | FID vs val | Link |  Samples (256x256) | Comments\n| ------------- | ------------- | ------------- |-------------  | -------------  |-------------  |\n| FFHQ (f=16) | 9.6 | -- | [ffhq_transformer](https://k00.fr/yndvfu95) |  [ffhq_samples](https://k00.fr/j626x093) |\n| CelebA-HQ (f=16) | 10.2 | -- | [celebahq_transformer](https://k00.fr/2xkmielf) | [celebahq_samples](https://k00.fr/j626x093) |\n| ADE20K (f=16) | -- | 35.5 | [ade20k_transformer](https://k00.fr/ot46cksa) | [ade20k_samples.zip](https://heibox.uni-heidelberg.de/f/70bb78cbaf844501b8fb/) [2k] | evaluated on val split (2k images)\n| COCO-Stuff (f=16) | -- | 20.4  | [coco_transformer](https://k00.fr/2zz6i2ce) | [coco_samples.zip](https://heibox.uni-heidelberg.de/f/a395a9be612f4a7a8054/) [5k] | evaluated on val split (5k images)\n| ImageNet (cIN) (f=16) | 15.98/15.78/6.59/5.88/5.20 | -- | [cin_transformer](https://k00.fr/s511rwcv) | [cin_samples](https://k00.fr/j626x093) | different decoding hyperparameters |\n| |  | | || |\n| FacesHQ (f=16) | -- |  -- | [faceshq_transformer](https://k00.fr/qqfl2do8)\n| S-FLCKR (f=16) | -- | -- | [sflckr](https://heibox.uni-heidelberg.de/d/73487ab6e5314cb5adba/)\n| D-RIN (f=16) | -- | -- | [drin_transformer](https://k00.fr/39jcugc5)\n| | |  | | || |\n| VQGAN ImageNet (f=16), 1024 |  10.54 | 7.94 | [vqgan_imagenet_f16_1024](https://heibox.uni-heidelberg.de/d/8088892a516d4e3baf92/) | [reconstructions](https://k00.fr/j626x093) | Reconstruction-FIDs.\n| VQGAN ImageNet (f=16), 16384 | 7.41 | 4.98 |[vqgan_imagenet_f16_16384](https://heibox.uni-heidelberg.de/d/a7530b09fed84f80a887/)  |  [reconstructions](https://k00.fr/j626x093) | Reconstruction-FIDs.\n| VQGAN OpenImages (f=8), 256 | -- | 1.49 |https://ommer-lab.com/files/latent-diffusion/vq-f8-n256.zip |  ---  | Reconstruction-FIDs. Available via [latent diffusion](https://github.com/CompVis/latent-diffusion).\n| VQGAN OpenImages (f=8), 16384 | -- | 1.14 |https://ommer-lab.com/files/latent-diffusion/vq-f8.zip  |  ---  | Reconstruction-FIDs. Available via [latent diffusion](https://github.com/CompVis/latent-diffusion)\n| VQGAN OpenImages (f=8), 8192, GumbelQuantization | 3.24 | 1.49 |[vqgan_gumbel_f8](https://heibox.uni-heidelberg.de/d/2e5662443a6b4307b470/)  |  ---  | Reconstruction-FIDs.\n| | |  | | || |\n| DALL-E dVAE (f=8), 8192, GumbelQuantization | 33.88 | 32.01 | https://github.com/openai/DALL-E | [reconstructions](https://k00.fr/j626x093) | Reconstruction-FIDs.\n\n## Running pretrained models\n\nThe commands below will start a streamlit demo which supports sampling at\ndifferent resolutions and image completions. To run a non-interactive version\nof the sampling process, replace `streamlit run scripts/sample_conditional.py --`\nby `python scripts/make_samples.py --outdir <path_to_write_samples_to>` and\nkeep the remaining command line arguments.\n\nTo sample from unconditional or class-conditional models,\nrun `python scripts/sample_fast.py -r <path/to/config_and_checkpoint>`.\nWe describe below how to use this script to sample from the ImageNet, FFHQ, and CelebA-HQ models,\nrespectively.\n\n### S-FLCKR\n![teaser](assets/sunset_and_ocean.jpg)\n\nYou can also [run this model in a Colab\nnotebook](https://colab.research.google.com/github/CompVis/taming-transformers/blob/master/scripts/taming-transformers.ipynb),\nwhich includes all necessary steps to start sampling.\n\nDownload the\n[2020-11-09T13-31-51_sflckr](https://heibox.uni-heidelberg.de/d/73487ab6e5314cb5adba/)\nfolder and place it into `logs`. Then, run\n```\nstreamlit run scripts/sample_conditional.py -- -r logs/2020-11-09T13-31-51_sflckr/\n```\n\n### ImageNet\n![teaser](assets/imagenet.png)\n\nDownload the [2021-04-03T19-39-50_cin_transformer](https://k00.fr/s511rwcv)\nfolder and place it into logs.  Sampling from the class-conditional ImageNet\nmodel does not require any data preparation. To produce 50 samples for each of\nthe 1000 classes of ImageNet, with k=600 for top-k sampling, p=0.92 for nucleus\nsampling and temperature t=1.0, run\n\n```\npython scripts/sample_fast.py -r logs/2021-04-03T19-39-50_cin_transformer/ -n 50 -k 600 -t 1.0 -p 0.92 --batch_size 25\n```\n\nTo restrict the model to certain classes, provide them via the `--classes` argument, separated by\ncommas. For example, to sample 50 *ostriches*, *border collies* and *whiskey jugs*, run\n\n```\npython scripts/sample_fast.py -r logs/2021-04-03T19-39-50_cin_transformer/ -n 50 -k 600 -t 1.0 -p 0.92 --batch_size 25 --classes 9,232,901\n```\nWe recommended to experiment with the autoregressive decoding parameters (top-k, top-p and temperature) for best results.\n\n### FFHQ/CelebA-HQ\n\nDownload the [2021-04-23T18-19-01_ffhq_transformer](https://k00.fr/yndvfu95) and\n[2021-04-23T18-11-19_celebahq_transformer](https://k00.fr/2xkmielf)\n\n==============================================\n"
+        },
+        {
+            "content": null,
+            "role": "assistant",
+            "tool_calls": [
+                {
+                    "function": {
+                        "arguments": "{}",
+                        "name": "terminal_page_down"
+                    },
+                    "id": "call_8Rg8sWHTKB64ptnjzUxBQh5T",
+                    "type": "function"
+                }
+            ],
+            "function_call": null,
+            "sender": "Prepare Agent"
+        },
+        {
+            "role": "tool",
+            "tool_call_id": "call_8Rg8sWHTKB64ptnjzUxBQh5T",
+            "name": "terminal_page_down",
+            "content": "[The output of the tool `read_file` showing in the interactive terminal]\nYou previously visited this page of terminal 2 seconds ago.\nTerminal viewport position: Showing page 2 of 4.\n[NOTE] The output of the tool `read_file`, you can use `terminal_page_up` to scroll up and `terminal_page_down` to scroll down. If there are many pages with meaningless content like progress bar or output of generating directory structure when there are many datasets in the directory, you can use `terminal_page_to` to move the viewport to the end of terminal where the meaningful content is.\n==============================================\nfolders and place them into logs.\nAgain, sampling from these unconditional models does not require any data preparation.\nTo produce 50000 samples, with k=250 for top-k sampling,\np=1.0 for nucleus sampling and temperature t=1.0, run\n\n```\npython scripts/sample_fast.py -r logs/2021-04-23T18-19-01_ffhq_transformer/\n```\nfor FFHQ and\n\n```\npython scripts/sample_fast.py -r logs/2021-04-23T18-11-19_celebahq_transformer/\n```\nto sample from the CelebA-HQ model.\nFor both models it can be advantageous to vary the top-k/top-p parameters for sampling.\n\n### FacesHQ\n![teaser](assets/faceshq.jpg)\n\nDownload [2020-11-13T21-41-45_faceshq_transformer](https://k00.fr/qqfl2do8) and\nplace it into `logs`. Follow the data preparation steps for\n[CelebA-HQ](#celeba-hq) and [FFHQ](#ffhq). Run\n```\nstreamlit run scripts/sample_conditional.py -- -r logs/2020-11-13T21-41-45_faceshq_transformer/\n```\n\n### D-RIN\n![teaser](assets/drin.jpg)\n\nDownload [2020-11-20T12-54-32_drin_transformer](https://k00.fr/39jcugc5) and\nplace it into `logs`. To run the demo on a couple of example depth maps\nincluded in the repository, run\n\n```\nstreamlit run scripts/sample_conditional.py -- -r logs/2020-11-20T12-54-32_drin_transformer/ --ignore_base_data data=\"{target: main.DataModuleFromConfig, params: {batch_size: 1, validation: {target: taming.data.imagenet.DRINExamples}}}\"\n```\n\nTo run the demo on the complete validation set, first follow the data preparation steps for\n[ImageNet](#imagenet) and then run\n```\nstreamlit run scripts/sample_conditional.py -- -r logs/2020-11-20T12-54-32_drin_transformer/\n```\n\n### COCO\nDownload [2021-01-20T16-04-20_coco_transformer](https://k00.fr/2zz6i2ce) and\nplace it into `logs`. To run the demo on a couple of example segmentation maps\nincluded in the repository, run\n\n```\nstreamlit run scripts/sample_conditional.py -- -r logs/2021-01-20T16-04-20_coco_transformer/ --ignore_base_data data=\"{target: main.DataModuleFromConfig, params: {batch_size: 1, validation: {target: taming.data.coco.Examples}}}\"\n```\n\n### ADE20k\nDownload [2020-11-20T21-45-44_ade20k_transformer](https://k00.fr/ot46cksa) and\nplace it into `logs`. To run the demo on a couple of example segmentation maps\nincluded in the repository, run\n\n```\nstreamlit run scripts/sample_conditional.py -- -r logs/2020-11-20T21-45-44_ade20k_transformer/ --ignore_base_data data=\"{target: main.DataModuleFromConfig, params: {batch_size: 1, validation: {target: taming.data.ade20k.Examples}}}\"\n```\n\n## Scene Image Synthesis\n![teaser](assets/scene_images_samples.svg)\nScene image generation based on bounding box conditionals as done in our CVPR2021 AI4CC workshop paper [High-Resolution Complex Scene Synthesis with Transformers](https://arxiv.org/abs/2105.06458) (see talk on [workshop page](https://visual.cs.brown.edu/workshops/aicc2021/#awards)). Supporting the datasets COCO and Open Images.\n\n### Training\nDownload first-stage models [COCO-8k-VQGAN](https://heibox.uni-heidelberg.de/f/78dea9589974474c97c1/) for COCO or [COCO/Open-Images-8k-VQGAN](https://heibox.uni-heidelberg.de/f/461d9a9f4fcf48ab84f4/) for Open Images.\nChange `ckpt_path` in `data/coco_scene_images_transformer.yaml` and `data/open_images_scene_images_transformer.yaml` to point to the downloaded first-stage models.\nDownload the full COCO/OI datasets and adapt `data_path` in the same files, unless working with the 100 files provided for training and validation suits your needs already.\n\nCode can be run with\n`python main.py --base configs/coco_scene_images_transformer.yaml -t True --gpus 0,`\nor\n`python main.py --base configs/open_images_scene_images_transformer.yaml -t True --gpus 0,`\n\n### Sampling\nTrain a model as described above or download a pre-trained model:\n - [Open Images 1 billion parameter model](https://drive.google.com/file/d/1FEK-Z7hyWJBvFWQF50pzSK9y1W_CJEig/view?usp=sharing) available that trained 100 epochs. On 256x256 pixels, FID 41.48±0.21, SceneFID 14.60±0.15, Inception Score 18.47±0.27. The model was trained with 2d crops of images and is thus well-prepared for the task of generating high-resolution images, e.g. 512x512.\n - [Open Images distilled version of the above model with 125 million parameters](https://drive.google.com/file/d/1xf89g0mc78J3d8Bx5YhbK4tNRNlOoYaO) allows for sampling on smaller GPUs (4 GB is enough for sampling 256x256 px images). Model was trained for 60 epochs with 10% soft loss, 90% hard loss. On 256x256 pixels, FID 43.07±0.40, SceneFID 15.93±0.19, Inception Score 17.23±0.11.\n - [COCO 30 epochs](https://heibox.uni-heidelberg.de/f/0d0b2594e9074c7e9a33/)\n - [COCO 60 epochs](https://drive.google.com/file/d/1bInd49g2YulTJBjU32Awyt5qnzxxG5U9/) (find model statistics for both COCO versions in `assets/coco_scene_images_training.svg`)\n\nWhen downloading a pre-trained model, remember to change `ckpt_path` in `configs/*project.yaml` to point to your downloaded first-stage model (see ->Training).\n\nScene image generation can be run with\n`python scripts/make_scene_samples.py --outdir=/some/outdir -r /path/to/pretrained/model --resolution=512,512`\n\n## Training on custom data\n\nTraining on your own dataset can be beneficial to get better tokens and hence better images for your domain.\nThose are the steps to follow to make this work:\n1. install the repo with `conda env create -f environment.yaml`, `conda activate taming` and `pip install -e .`\n1. put your .jpg files in a folder `your_folder`\n2. create 2 text files a `xx_train.txt` and `xx_test.txt` that point to the files in your training and test set respectively (for example `find $(pwd)/your_folder -name \"*.jpg\" > train.txt`)\n3. adapt `configs/custom_vqgan.yaml` to point to these 2 files\n4. run `python main.py --base configs/custom_vqgan.yaml -t True --gpus 0,1` to\n   train on two GPUs. Use `--gpus 0,` (with a trailing comma) to train on a single GPU.\n\n## Data Preparation\n\n### ImageNet\nThe code will try to download (through [Academic\nTorrents](http://academictorrents.com/)) and prepare ImageNet the first time it\nis used. However, since ImageNet is quite large, this requires a lot of disk\nspace and time. If you already have ImageNet on your disk, you can speed things\nup by putting the \n==============================================\n"
+        },
+        {
+            "content": null,
+            "role": "assistant",
+            "tool_calls": [
+                {
+                    "function": {
+                        "arguments": "{\"reference_codebases\":[\"vqvae-pytorch\",\"VQGAN-pytorch\",\"pytorch-vae\",\"clip\",\"VQGAN\"],\"reference_papers\":[\"Neural discrete representation learning\",\"High-resolution image synthesis with latent diffusion models\",\"Vector-quantized image modeling with improved vqgan\",\"Estimation or propagating gradients through stochastic neurons for conditional computation\",\"Learning transferable visual models from natural language supervision\"],\"reference_paths\":[\"/workplace/vqvae-pytorch\",\"/workplace/VQGAN-pytorch\",\"/workplace/pytorch-vae\",\"/workplace/clip\",\"/workplace/VQGAN\"]}",
+                        "name": "case_resolved"
+                    },
+                    "id": "call_Y0JWbLc5AlCdxMnKRIC81lIr",
+                    "type": "function"
+                }
+            ],
+            "function_call": null,
+            "sender": "Prepare Agent"
+        },
+        {
+            "role": "tool",
+            "tool_call_id": "call_Y0JWbLc5AlCdxMnKRIC81lIr",
+            "name": "case_resolved",
+            "content": "I have determined the reference codebases and paths according to the existing resources and the innovative ideas.\n{\n    \"reference_codebases\": [\n        \"vqvae-pytorch\",\n        \"VQGAN-pytorch\",\n        \"pytorch-vae\",\n        \"clip\",\n        \"VQGAN\"\n    ],\n    \"reference_paths\": [\n        \"/workplace/vqvae-pytorch\",\n        \"/workplace/VQGAN-pytorch\",\n        \"/workplace/pytorch-vae\",\n        \"/workplace/clip\",\n        \"/workplace/VQGAN\"\n    ],\n    \"reference_papers\": [\n        \"Neural discrete representation learning\",\n        \"High-resolution image synthesis with latent diffusion models\",\n        \"Vector-quantized image modeling with improved vqgan\",\n        \"Estimation or propagating gradients through stochastic neurons for conditional computation\",\n        \"Learning transferable visual models from natural language supervision\"\n    ]\n}\n"
+        }
+    ],
+    "context_variables": {
+        "working_dir": "workplace",
+        "date_limit": "2024-01-01",
+        "prepare_result": {
+            "reference_codebases": [
+                "vqvae-pytorch",
+                "VQGAN-pytorch",
+                "pytorch-vae",
+                "clip",
+                "VQGAN"
+            ],
+            "reference_paths": [
+                "/workplace/vqvae-pytorch",
+                "/workplace/VQGAN-pytorch",
+                "/workplace/pytorch-vae",
+                "/workplace/clip",
+                "/workplace/VQGAN"
+            ],
+            "reference_papers": [
+                "Neural discrete representation learning",
+                "High-resolution image synthesis with latent diffusion models",
+                "Vector-quantized image modeling with improved vqgan",
+                "Estimation or propagating gradients through stochastic neurons for conditional computation",
+                "Learning transferable visual models from natural language supervision"
+            ]
+        }
+    }
+}

@@ -41,8 +41,8 @@ def process_tex_file(tex_path, bib_output_path):
     bib_lines = []
 
     for i, line in enumerate(lines):
-        # 删除以 \bib 开头的行
-        if line.strip().startswith('\\bib'):
+        # 删除以 \bib 开头的行（但保留 \bibitem）
+        if line.strip().startswith('\\bib') and not line.strip().startswith('\\bibitem'):
             # print(f"删除行（\\bib 开头）: {line.strip()}")
             continue
 

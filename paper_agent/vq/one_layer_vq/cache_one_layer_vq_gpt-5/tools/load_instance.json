@@ -1,0 +1,88 @@
+{
+    "name": "load_instance",
+    "args": {
+        "instance_path": "../benchmark/final/vq/one_layer_vq.json",
+        "task_level": "task1"
+    },
+    "result": {
+        "source_papers": [
+            {
+                "reference": "Neural discrete representation learning",
+                "rank": 1,
+                "type": [
+                    "methodological foundation"
+                ],
+                "justification": "This paper introduces Vector Quantization (VQ) as a foundational technique for encoding data into discrete representations. It lays the methodological groundwork for unsupervised representation learning and latent generative models, which are central to the current research.",
+                "usage": "The core VQ method proposed in this study is directly utilized in the proposed model, providing the essential framework for vector quantization."
+            },
+            {
+                "reference": "Vector-quantized image modeling with improved VQGAN",
+                "rank": 2,
+                "type": [
+                    "methodological foundation",
+                    "critical component"
+                ],
+                "justification": "This work enhances the original VQ-VAE framework by integrating adversarial networks, thereby improving the perceptual quality of generated samples. It establishes a robust quantization protocol essential for effective latent generative modeling, which is critical for addressing codebook utilization in this paper.",
+                "usage": "The improved VQGAN methodology is built upon to develop the proposed model, particularly in optimizing codebook utilization without sacrificing model capacity."
+            },
+            {
+                "reference": "Taming transformers for high-resolution image synthesis",
+                "rank": 3,
+                "type": [
+                    "methodological foundation",
+                    "conceptual inspiration"
+                ],
+                "justification": "This study presents the proposed model, which combines Vector Quantization with adversarial training to achieve high-resolution image synthesis. It not only provides methodological advancements but also conceptually inspires the current research direction towards enhancing codebook utilization in VQ models.",
+                "usage": "VQGAN serves as a foundational model that the proposed model builds upon, especially in terms of integrating adversarial techniques to improve latent space optimization."
+            },
+            {
+                "reference": "Estimating or propagating gradients through stochastic neurons for conditional computation",
+                "rank": 4,
+                "type": [
+                    "methodological foundation"
+                ],
+                "justification": "This study introduces the Straight-Through Estimator (STE), a crucial technique for enabling gradient propagation through non-differentiable operations in neural networks. STE is pivotal in training the proposed model by allowing gradients to flow through discrete decision points.",
+                "usage": "STE is employed in this study to facilitate gradient descent updates for the codebook vectors, ensuring effective training of the proposed model despite the discrete quantization step."
+            },
+            {
+                "reference": "Learning transferable visual models from natural language supervision.",
+                "rank": 5,
+                "type": [
+                    "critical component"
+                ],
+                "justification": "This work leverages a pre-trained CLIP model to initialize the codebook, creating a well-structured latent space that aligns with encoder outputs. It demonstrates the effectiveness of using external models to enhance codebook utilization, which this study aims to improve upon without relying on such external dependencies.",
+                "usage": "VQGAN-LC, as proposed in this study, is used as a comparative baseline to highlight the limitations of relying on pre-trained models for codebook initialization."
+            },
+            {
+                "reference": "Finite scalar quantization: VQ-VAE made simple.",
+                "rank": 6,
+                "type": [
+                    "critical component"
+                ],
+                "justification": "This paper introduces Finite Scalar Quantization (FSQ), a technique that reduces the dimensionality of the latent space to improve codebook utilization. While FSQ effectively addresses codebook collapse, it does so by compromising the proposed model capacity, a trade-off that this study seeks to overcome.",
+                "usage": "FSQ is evaluated as an existing method for mitigating representation collapse. The proposed model is proposed as a superior alternative that avoids the dimensionality reduction inherent in FSQ."
+            },
+            {
+                "reference": "Auto-encoding variational bayes.",
+                "rank": 7,
+                "type": [
+                    "conceptual inspiration"
+                ],
+                "justification": "This foundational paper on Variational Autoencoders (VAEs) provides a contrasting perspective to VQ models by enforcing a Gaussian distribution on the latent space. It inspires the theoretical analysis in this study, particularly in understanding the disjoint optimization challenges inherent in VQ models.",
+                "usage": "Conceptual insights from VAEs are used to theoretically analyze the representation collapse problem in VQ models, highlighting the differences in optimization strategies between VAEs and the proposed approach."
+            },
+            {
+                "reference": "Categorical reparameterization with gumbel-softmax.",
+                "rank": 8,
+                "type": [
+                    "conceptual inspiration"
+                ],
+                "justification": "This study presents the Gumbel-Softmax trick, an alternative quantization method that allows for differentiable sampling from categorical distributions. It serves as an inspiration for exploring various quantization strategies to improve codebook utilization in VQ models.",
+                "usage": "The Gumbel-Softmax technique is discussed as part of alternative quantization strategies, informing the development of the proposed model's approach to optimizing the latent space."
+            }
+        ],
+        "task_instructions": "1. **Task**: The proposed model is designed to address representation collapse in Vector Quantized (VQ) models, specifically in unsupervised representation learning and latent generative models applicable to modalities like image and audio data.\n\n2. **Core Techniques/Algorithms**: The methodology introduces a linear transformation layer applied to the code vectors in a reparameterization strategy that leverages a learnable latent basis, enhancing the optimization of the entire codebook rather than individual code vectors.\n\n3. **Purpose and Function of Major Technical Components**:\n   - **Encoder (f_θ)**: Maps input data (images or audio) into a continuous latent representation (z_e).\n   - **Codebook (C)**: A collection of discrete code vectors used for quantizing the latent representations.\n   - **Linear Transformation Layer (W)**: A learnable matrix that transforms the codebook vectors, optimizing the entire latent space jointly to improve codebook utilization during training.\n   - **Decoder (g_ϕ)**: Reconstructs the input data from the quantized representations.\n\n4. **Implementation Details**:\n   - **Key Parameters**:\n     - Learning rate (η): Commonly set to 1e-4.\n     - Commitment weight (β): Adjust according to data modality, e.g., set to 1.0 for images and 1000.0 for audio.\n   - **Input/Output Specifications**:\n     - **Input**: Raw data instances, such as images of size 128x128 or audio frames. \n     - **Output**: Reconstructed data (images or audio).\n   - **Important Constraints**: The codebook size should be large enough to capture the data complexity; experiments indicate sizes like 65,536 or larger are beneficial.\n\n5. **Step-by-Step Description of Component Interaction**:\n   - **Step 1**: Initialize the codebook (C) using a distribution (e.g., Gaussian) and freeze its parameters for initial training iterations.\n   - **Step 2**: For each data instance (x), compute the latent representation (z_e) using the encoder (f_θ).\n   - **Step 3**: Perform nearest code search to find the closest codebook vector to z_e using the distance metric. Use the selected code vector for reconstruction.\n   - **Step 4**: Reparameterize the selected code vector using the performed linear transformation (C * W), effectively treating both C and W in the optimization process.\n   - **Step 5**: Calculate the loss, which combines reconstruction loss (MSE between original and decoded output) and commitment loss to ensure effective use of the codebook.\n   - **Step 6**: Update only the linear layer (W) through gradient backpropagation, keeping C static throughout this phase to facilitate the joint training procedure.\n\n6. **Critical Implementation Details**:\n   - To prevent representation collapse, it is crucial to carefully set the learning rate so that the transformation matrix W can adapt without compromising the usefulness of the latent space.\n   - Keeping the codebook static during the initial phase speeds up the convergence while ensuring that the linear transformation can stretch and rotate the latent space effectively.\n   - Regularly evaluate the utilization percentage of the codebook during training iterations, aiming for near-complete usage (ideally 100%) to combat representation collapse actively.",
+        "date": "2024-01-01",
+        "date_limit": "2024-01-01"
+    }
+}

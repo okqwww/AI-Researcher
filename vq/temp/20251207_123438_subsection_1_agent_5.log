@@ -1,0 +1,36 @@
+```latex
+\subsection{Vector Quantizer}
+
+The Vector Quantizer (VQ) serves as a central mechanism in our proposed Vector Quantized Variational Autoencoder (VQ-VAE) architecture, enabling the transformation of continuous latent representations into discrete embeddings. This critical transition facilitates the management of representations through a finite set of embeddings, allowing the model to encapsulate learned features with greater efficiency. By integrating the vector quantization approach, we significantly enhance the capacity of the model to capture structured representations of the input data, which is key for effective generative modeling.
+
+A notable aspect of our VQ implementation is the utilization of Exponential Moving Average (EMA) techniques for updating the codebook embeddings. This method contributes to stabilizing the training dynamics while ensuring effective backpropagation of gradients, which is particularly vital for deep neural network architectures. 
+
+\subsubsection{Functionality}
+During the forward pass, the Vector Quantizer processes the latent representations \( z_e \) produced by the encoder and quantizes them into discrete outputs \( z_q \). In addition, it computes the quantization loss \( vq\_loss \) and derives various statistics \( stats \) to inform performance during training. The computational flow can be summarized mathematically as follows:
+
+\begin{equation}
+z_e \xrightarrow{\text{Quantizer}} z_q, \quad vq\_loss, \quad stats
+\end{equation}
+
+In this formulation, \( z_q \) represents the resultant quantized representation. The term \( vq\_loss \) encompasses the commitment loss and codebook loss, two fundamental components required to maintain training stability. The statistics \( stats \) yield valuable insights into the efficiency of the quantization process, including metrics such as perplexity and cluster utilization, which reflect usage patterns of the embeddings.
+
+\subsubsection{Embedding Updates}
+The quantization process involves an adaptively updated codebook of embeddings, whose parameters are adjusted based on their frequency of use, leveraging EMA. This adaptive mechanism ensures that the embeddings are finely tuned to align with the underlying data distribution, thereby capturing the salient features present within the latent space. The update process for the embeddings is succinctly described as follows:
+
+\begin{equation}
+\text{Updated Embeddings} \leftarrow \text{EMA}(z_e, \text{encoding indices})
+\end{equation}
+
+This approach highlights the significance of frequently utilized embeddings, which enhances overall model performance while minimizing the influence of infrequently engaged embeddings, promoting a robust representation of the latent space.
+
+\subsubsection{RRT Gradient Transport}
+To address the challenges posed by the non-differentiable nature of quantization, we implement the Rotation-Rescaling Transform (RRT), which plays a crucial role in our gradient transport strategy. This technique is pivotal in preserving angular relationships during the backpropagation of gradients from the quantized representations back to the encoder. Upon generating \( z_q \), the gradients undergo transformations mathematically defined by:
+
+\begin{equation}
+z_q \xrightarrow{\text{RRT}} \text{Transformed Gradients}
+\end{equation}
+
+The RRT employs Householder reflections to ensure that the gradients retain both relevance and informational integrity in relation to the associated codebook vectors. This method of preserving angular relationships guarantees that gradients meaningfully propagate back to the encoder, thereby considerably enhancing training efficiency and stability.
+
+In summary, the Vector Quantizer is a fundamental component of our VQ-VAE framework, serving the dual purpose of discretizing continuous latent representations and enhancing the overall training dynamics through efficient embedding updates and optimized gradient transport strategies. This integration ultimately contributes to accelerated convergence rates and the generation of high-quality representations, advancing the state-of-the-art in variational inference and generative modeling.
+```

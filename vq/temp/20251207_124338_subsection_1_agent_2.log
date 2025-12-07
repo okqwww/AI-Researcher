@@ -1,0 +1,29 @@
+```latex
+\subsection{Main Performance Comparison}
+
+In this section, we detail the results of our primary experiments aimed at assessing the effectiveness of the proposed enhancements to the VQ-VAE architecture, specifically focusing on the Rotation and Rescaling Transformations (RRT). The experiments utilized the CIFAR-10 dataset, which contains 60,000 32x32 color images across 10 classes. We evaluated the model's performance using several metrics, including reconstruction loss, Peak Signal-to-Noise Ratio (PSNR), Structural Similarity Index (SSIM), and Fréchet Inception Distance (FID).
+
+The experimental results, outlined in Table \ref{tab:performance_metrics}, summarize performance indicators after training for three epochs. These metrics reveal significant advancements in the training of the enhanced VQ-VAE model, particularly indicated by a notable decrease in both reconstruction loss and Vector Quantization (VQ) loss over the course of the training. 
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Metric & Value \\
+\hline
+Reconstruction Loss & 0.0254 \\
+PSNR & 15.96 \\
+SSIM & 0.61 \\
+FID & 307.49 \\
+\hline
+\end{tabular}
+\caption{Performance metrics after training on CIFAR-10 for 3 epochs.}
+\label{tab:performance_metrics}
+\end{table}
+
+Despite these improvements, a closer analysis reveals concerning trends regarding codebook utilization. Specifically, both perplexity and cluster usage exhibited a downward trend throughout the training epochs, suggesting a potential risk of codebook collapse. This underutilization of the codebook could threaten the model's ability to generate diverse and varied representations, a critical aspect for effective generative modeling.
+
+Furthermore, although FID scores showed slight improvement, they remained relatively high. This indicates a substantial opportunity for enhancing the perceptual quality of generated outputs. It suggests that further investigations are warranted to explore strategies for fostering greater model robustness and fidelity in outputs. To address these issues, we propose leveraging alternative loss functions, such as perceptual losses, and experimenting with extended training durations to potentially enhance the perceptual quality and reduce FID scores effectively.
+
+In conclusion, the preliminary results support the effectiveness of the proposed enhancements, particularly regarding the integration of Rotation and Rescaling Transformations in the VQ-VAE architecture. However, they also underscore the necessity for additional optimization strategies in future experiments, with a focus on improving codebook utilization stability while enhancing the overall quality of generated outputs.
+```

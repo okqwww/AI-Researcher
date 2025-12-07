@@ -1,0 +1,20 @@
+```latex
+\begin{abstract}
+
+% [Problem Context]
+% - Research area and problem statement
+% - Current challenges or limitations
+Generative models, specifically Vector Quantized Variational Autoencoders (VQ-VAEs), have become a key area in machine learning due to their effectiveness in image synthesis and data representation. However, challenges such as codebook collapse, limited gradient propagation, and underutilization of embeddings persist despite ongoing efforts to enhance reconstruction fidelity.
+
+% [Proposed Solution]
+% - Main approach and key innovations
+% - Technical highlights
+In response to these challenges, we propose an Enhanced VQ-VAE architecture that integrates a Rotation and Rescaling Transformation (RRT) to optimize gradient transport through non-differentiable quantization layers. This novel method preserves angular relationships among latent features during backpropagation, coupled with adaptive codebook management strategies that encourage diverse embedding usage.
+
+% [Results and Impact]
+% - Key experimental findings
+% - Practical significance
+Extensive experiments on benchmark datasets demonstrate significant improvements in generative performance metrics, highlighting enhanced reconstruction quality and stability in training dynamics. These findings contribute to a deeper understanding of gradient flow in discrete representation learning and broaden the applicability of VQ-VAE frameworks in practical scenarios.
+
+\end{abstract}
+```

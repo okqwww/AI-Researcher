@@ -1,0 +1,35 @@
+```latex
+\subsection{Decoder}
+
+The Decoder is a critical element of the Vector Quantized Variational Autoencoder (VQ-VAE) architecture. Its primary role is to generate high-fidelity images from the quantized latent representations ($z_q$) produced by the Vector Quantizer. By leveraging the learned latent features from the encoding phase, the Decoder is entrusted with reconstructing outputs that closely mirror the original images in both visual fidelity and semantic relevance. This reconstruction step is paramount to the objectives of generative modeling that emphasize the creation of outputs that are not only realistic but also meaningful.
+
+\subsubsection{Architectural Overview}
+
+The architecture of the Decoder mainly comprises transposed convolutional layers. These layers are purposefully structured to incrementally upscale the spatial dimensions of the quantized representations while simultaneously refining the feature maps. Each transposed convolutional layer applies a set of learnable filters optimized through backpropagation during training, permitting the model to capture and reproduce essential spatial hierarchies evident in the input data. This design is instrumental in achieving high-quality image reconstructions directly from quantized latent codes.
+
+\paragraph{Decoder Workflow}
+\begin{align*}
+\text{Input:} & \quad \text{Quantized representations } (z_q) \\
+\text{Output:} & \quad \text{Intermediate feature maps for reconstruction } (\hat{h}) \\
+\text{Processing:} & \quad z_q \xrightarrow{\text{Transposed Convolutional Layers}} \hat{h}
+\end{align*}
+
+The Decoder ensures a continuous expansion of spatial dimensions and carefully preserves critical visual information intrinsic to the input data. To enhance the efficiency of gradient propagation throughout the network, the Decoder incorporates residual connections within its framework. These connections significantly improve the backpropagation process by allowing gradients to bypass specific layers, thereby alleviating the vanishing gradient problem frequently encountered in deeper neural networks. The integration of residual connections fosters the retention of valuable gradient information, which enhances both reconstruction quality and training efficiency.
+
+\subsubsection{Output Layer}
+
+The final segment of the Decoder, known as the Output Layer, synthesizes the refined intermediate feature maps into the reconstructed images. This layer plays a pivotal role in ensuring that the generated outputs align with both the original content and the necessary pixel dimensions and color formats.
+
+\paragraph{Output Layer Workflow}
+\begin{align*}
+\text{Input:} & \quad \text{Intermediate feature maps } (\hat{h}) \\
+\text{Output:} & \quad \text{Final reconstructed images } (\hat{x}) \\
+\text{Processing:} & \quad \hat{h} \xrightarrow{\text{Output Layer}} \hat{x}
+\end{align*}
+
+In the Output Layer, a sigmoid activation function is applied to constrain pixel values within the range [0, 1]. This normalization step is critical to maintain the standard RGB format and ensure high fidelity in the final image outputs. The systematic organization of operations throughout the Decoder not only enhances the accuracy of the reconstructions but also significantly contributes to the overall robustness and performance of the generative model.
+
+Further augmenting the Decoder's capabilities is the implementation of the Rotation-Rescaling Transform (RRT). This mechanism is designed to enhance gradient flow across the quantization layers. The RRT employs transformations that retain angular relationships among features, which is particularly beneficial when backpropagation encounters challenges due to non-differentiable conditions. By ensuring that the mapping retains directionality, the RRT contributes to more stable learning dynamics throughout the quantization process, ultimately improving the model's overall performance.
+
+In summary, the Decoder's structured approach not only facilitates high-quality image reconstruction but also integrates advanced techniques that optimize the learning process, significantly improving output quality within the generative framework.
+```

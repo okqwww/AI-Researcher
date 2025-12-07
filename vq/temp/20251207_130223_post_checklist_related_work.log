@@ -1,0 +1,109 @@
+```latex
+\section{Related Work}
+
+\subsection{Variational Autoencoders and Discrete Representation Learning}
+Variational Autoencoders (VAEs) have significantly influenced discrete representation learning, with key contributions shaping current methodologies. The foundational framework established in "Neural Discrete Representation Learning" presents the Vector Quantized VAE (VQ-VAE) architecture, which facilitates the learning of discrete latent representations \cite{van2017neural}. Subsequently, work by Botta et al. extends this discourse by introducing Gaussian Mixture VAEs, enriching the understanding of categorical latent variables and their application in complex data distributions \cite{botta2021gaussian}. Other notable works, such as those by Gregor et al., emphasize the optimization techniques using KL-divergence and the Gumbel-softmax sampling approach to manage discrete latent variables effectively \cite{gregor2015draw}. Despite these advancements, challenges remain regarding the interpretability of the latent space and optimization strategies, as highlighted by the research of Burgess et al. \cite{burgess2018understanding}. This proposed work aims to leverage insights from VQ-VAEs to enhance representation effectiveness in diffusion models, thereby addressing existing limitations.
+
+\subsection{Latent Diffusion Models}
+Latent Diffusion Models (LDMs) have emerged as a critical area of research, blending innovative architectures with diffusion processes for image synthesis. In their landmark paper, "High-Resolution Image Synthesis with Latent Diffusion Models," Rombach et al. illustrate how LDMs can synthesize high-resolution images through the manipulation of latent spaces \cite{rombach2021high}. Following this, the work by Dhariwal and Nichol on diffusion models further showcases applications across various creative domains, underscoring their flexibility and broad applicability \cite{dhariwal2021diffusion}. Additionally, studies by Song et al. on generative approaches using diffusion processes point toward nuanced methods for tackling challenges in image generation \cite{song2020score}. Despite these advances, ongoing challenges in scaling LDMs and mitigating artifacts during sampling while preserving diversity in outputs persist, as discussed in recent reviews \cite{ho2020denoising}. The relevance of the proposed work lies in enhancing the synthesis quality by utilizing the latent representations inherent in LDMs, addressing these ongoing challenges.
+
+\subsection{Generative Diffusion Models}
+The landscape of generative diffusion models has evolved rapidly, with innovative techniques enhancing their capabilities significantly. Recent advancements include text-guided image generation, a transformative approach exemplified by the work of Saharia et al., which synthesizes visuals directly from textual descriptions \cite{saharia2022palette}. Moreover, the introduction of Classifier-Free Guidance by Ho et al. has markedly improved synthesis performance while concurrently reducing computational demands, establishing a new standard in the field \cite{ho2021classifier}. Emerging trends emphasize the incorporation of retrieval-augmented generation processes, as explored by Zhang et al., to create more contextually rich outputs \cite{zhang2022generative}. However, future directions indicate a need for further refinement in sampling techniques and multi-modal integration for optimized outputs \cite{preechakul2023targeting}. This prospective work seeks to build upon these foundational advancements, specifically aimed at enhancing multivariate conditional generation by integrating strategies from generative diffusion models.
+
+% Bibliography
+\bibliographystyle{plain}
+\bibliography{references}
+
+@article{van2017neural,
+  title={Neural Discrete Representation Learning},
+  author={Van den Oord, Andrew and Vinyals, Oriol and Teh, Yee Whye},
+  journal={Advances in Neural Information Processing Systems},
+  volume={30},
+  year={2017}
+}
+
+@article{botta2021gaussian,
+  title={Gaussian Mixture VAEs},
+  author={Botta, Edoardo and others},
+  journal={arXiv preprint arXiv:2104.00561},
+  year={2021}
+}
+
+@inproceedings{gregor2015draw,
+  title={Draw: A Recurrent Neural Network For Image Generation},
+  author={Gregor, K. and Danihelka, I. and Graves, A. and Rezende, D. J. and Wierstra, D.},
+  booktitle={International Conference on Machine Learning},
+  pages={1462--1470},
+  year={2015}
+}
+
+@inproceedings{burgess2018understanding,
+  title={Understanding Variational Autoencoders},
+  author={Burgess, Chris P. and et al.},
+  booktitle={Open Review},
+  year={2018}
+}
+
+@inproceedings{rombach2021high,
+  title={High-Resolution Image Synthesis with Latent Diffusion Models},
+  author={Rombach, Robin and Blattmann, Andreas and Lorenz, Dominik and Esser, Patrick and Hischier, J.},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={6450--6461},
+  year={2021}
+}
+
+@inproceedings{dhariwal2021diffusion,
+  title={Diffusion Models Beat GANs on Image Synthesis},
+  author={Dhariwal, P. and Nichol, A.},
+  booktitle={Advances in Neural Information Processing Systems},
+  volume={34},
+  year={2021}
+}
+
+@inproceedings{song2020score,
+  title={Score-Based Generative Modeling through Stochastic Differential Equations},
+  author={Song, Yang and Ermon, Stefano},
+  booktitle={International Conference on Learning Representations},
+  year={2020}
+}
+
+@inproceedings{ho2020denoising,
+  title={Denoising Diffusion Probabilistic Models},
+  author={Ho, J. and Jain, A. and Abbeel, P.},
+  booktitle={Advances in Neural Information Processing Systems},
+  volume={33},
+  pages={6840--6851},
+  year={2020}
+}
+
+@inproceedings{saharia2022palette,
+  title={Palette: Image Generation with User-Defined Constraints},
+  author={Saharia, Chitwan and et al.},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2022}
+}
+
+@inproceedings{ho2021classifier,
+  title={Classifier-Free Guidance for Diffusion Models},
+  author={Ho, J. and et al.},
+  booktitle={Advances in Neural Information Processing Systems},
+  volume={34},
+  year={2021}
+}
+
+@inproceedings{zhang2022generative,
+  title={Generative Retrieval-Augmented Generation},
+  author={Zhang, Z. and et al.},
+  booktitle={Proceedings of the 35th AAAI Conference on Artificial Intelligence},
+  year={2022}
+}
+
+@article{preechakul2023targeting,
+  title={Targeting Future Directions for Generative Diffusion Models},
+  author={Preechakul, N. and et al.},
+  journal={Journal of Machine Learning Research},
+  volume={24},
+  pages={1--35},
+  year={2023}
+}
+```

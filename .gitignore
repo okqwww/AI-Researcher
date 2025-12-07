@@ -29,4 +29,12 @@ research_agent/.env
 
 research_agent/*_tmp/*
 
+.envpaper_agent/.env
 .env
+paper_agent/.env
+.env
+test_llm.py
+test_env_vars.py
+test_arxiv_search.py
+vq/temp/
+logs/

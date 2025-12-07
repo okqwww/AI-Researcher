@@ -1,0 +1,34 @@
+```latex
+\subsection{Vector Quantizer}
+
+The Vector Quantizer (VQ) is a pivotal element in our proposed architecture, facilitating the conversion of continuous latent representations into discrete embeddings. This conversion is essential for creating efficient and manageable representations, enabling the model to operate with a finite set of embeddings. The integration of VQ substantially enhances the model's capability to learn structured representations. A noteworthy technique employed in this process is the use of Exponential Moving Average (EMA) for updating codebook embeddings. This approach not only stabilizes the training dynamics but also promotes effective gradient flow during backpropagation, which is particularly beneficial for training deep neural networks.
+
+\subsubsection{Functionality}
+During the forward pass, the Vector Quantizer processes latent representations \( z_e \) and quantizes them into discrete outputs \( z_q \), while also computing quantization losses \( vq\_loss \) and deriving additional statistics \( stats \). The computational process can be represented mathematically as follows:
+
+\begin{equation}
+z_e \xrightarrow{\text{Quantizer}} z_q, \quad vq\_loss, \quad stats
+\end{equation}
+
+In this expression, \( z_q \) denotes the quantized representation, while \( vq\_loss \) encapsulates both the commitment loss and the codebook loss—two critical components that ensure training stability. The statistics \( stats \) incorporate metrics such as perplexity and cluster utilization, which yield insights into the efficiency of the quantization process and the performance of the model.
+
+\subsubsection{Embedding Updates}
+The quantization procedure utilizes an adaptively updated codebook of embeddings whose parameters are dynamically adjusted based on their usage frequency, leveraging EMA techniques. This adaptive updating mechanism ensures that the embeddings closely align with the underlying data distribution, effectively capturing the salient features of the latent space. The process for updating embeddings can be succinctly described as:
+
+\begin{equation}
+\text{Updated Embeddings} \leftarrow \text{EMA}(z_e, \text{encoding indices})
+\end{equation}
+
+This method emphasizes the contribution of frequently utilized embeddings, enhancing the overall performance of the model while mitigating the influence of rarely engaged embeddings.
+
+\subsubsection{RRT Gradient Transport}
+To tackle the challenges presented by the non-differentiable nature of quantization, we employ the Rotation-Rescaling Transform (RRT) as a crucial part of our gradient transport strategy. This technique is fundamental in preserving angular relationships while facilitating the propagation of gradients from the quantized representations back to the encoder. After the generation of \( z_q \), the gradients undergo transformations defined mathematically by:
+
+\begin{equation}
+z_q \xrightarrow{\text{RRT}} \text{Transformed Gradients}
+\end{equation}
+
+These transformations employ Householder reflection techniques, ensuring that the gradients maintain both relevance and informational integrity concerning the corresponding codebook vectors. The preservation of angular relationships allows gradients to meaningfully flow back to the encoder, significantly enhancing training efficiency.
+
+In summary, the Vector Quantizer represents a core component of our framework, fulfilling the dual roles of discretizing latent representations and improving training dynamics through efficient embedding updates and sophisticated gradient transport strategies. This ultimately contributes to accelerated convergence rates and the generation of high-quality representations within the Vector Quantized Variational Autoencoder (VQ-VAE) architecture.
+```

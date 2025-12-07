@@ -1,0 +1,46 @@
+```latex
+\subsection{Experimental Settings}
+
+We conducted a series of experiments to evaluate the effectiveness of the proposed enhancements to Vector Quantized Variational Autoencoders (VQ-VAEs) using the CIFAR-10 dataset. The experimental settings are detailed below.
+
+\subsubsection{Datasets and Preprocessing}
+The CIFAR-10 dataset consists of 60,000 32x32 color images categorized into 10 classes, providing a diverse range of visual content. For our experiments, we utilized the training split of 50,000 images and the test split of 10,000 images. The preprocessing steps to ensure optimal performance included normalization of image pixel values to a range of [0, 1] and application of standard transformations such as random cropping and flipping during training to enhance generalization.
+
+\subsubsection{Evaluation Metrics}
+We employed several metrics to comprehensively evaluate the performance of our model. The key evaluation metrics include:
+\begin{itemize}
+    \item \textbf{Frechet Inception Distance (FID)}: Measures the distance between the distributions of generated and real images, where lower scores indicate better quality.
+    \item \textbf{Peak Signal-to-Noise Ratio (PSNR)}: Assesses the quality of reconstructed images, with higher values reflecting better fidelity.
+    \item \textbf{Structural Similarity Index (SSIM)}: Evaluates pixel-level similarities between the original and generated images, with values closer to 1 indicating better consistency.
+\end{itemize}
+
+\subsubsection{Baselines}
+To benchmark the performance of our proposed method, we compared it against several baseline models:
+\begin{itemize}
+    \item \textbf{Standard Variational Autoencoders (VAE)}: A baseline using traditional VAE architecture for comparison.
+    \item \textbf{Standard Generative Adversarial Networks (GANs)}: A widely used generative model providing a reference for image generation performance.
+\end{itemize}
+
+\subsubsection{Implementation Details}
+The implementation was based on the VQ-VAE architecture with enhancements for gradient propagation through Rotation and Rescaling Transform (RRT). The main configuration details for the experiments are outlined in Table~\ref{tab:implementation_details}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Parameter} & \textbf{Setting} \\
+\hline
+Number of Epochs & 3 \\
+Batch Size & 128 \\
+Learning Rate & 2e-4 \\
+EMA Decay & 0.99 \\
+\hline
+\end{tabular}
+\caption{Experimental implementation details for training VQ-VAE on CIFAR-10.}
+\label{tab:implementation_details}
+\end{table}
+
+Furthermore, we utilized an Adam optimizer for training, allowing for efficient adjustments of the model parameters. Additionally, the model's computational requirements were met using a contemporary GPU to expedite the training process.
+
+Overall, this experimental setup aimed to systematically assess the efficacy of the proposed enhancements in improving the performance of VQ-VAE models within the context of image generation tasks.
+```

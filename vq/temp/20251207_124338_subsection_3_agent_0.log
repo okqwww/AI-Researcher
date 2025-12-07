@@ -1,0 +1,22 @@
+```latex
+\subsection{Further Experiments} % Additional experimental variations and tests
+
+The aim of the further experiments is to explore various parameters and methodologies for optimizing the performance of the proposed Vector Quantized Variational Autoencoder (VQ-VAE). Building upon the findings from the initial experiments, we investigate several key areas to enhance model efficiency and output quality.
+
+\subsubsection{Codebook Utilization} 
+To address the concerning downward trend observed in codebook utilization, alterations to the Exponential Moving Average (EMA) decay and the commitment loss (beta) parameters will be implemented. A mechanism will be introduced to periodically reinitialize underutilized codes within the VQ-VAE framework to prevent codebook collapse, enhancing the diversity of representations captured.
+
+\subsubsection{Exploration of Alternative Rotations} 
+In an effort to investigate the impact of gradient transport methods on VQ-VAE performance, we will experiment with different rotation techniques. Specifically, the Rodrigues rotation formula will be employed and benchmarked against traditional Householder reflections, enabling a comparative analysis of their effectiveness in enhancing training dynamics.
+
+\subsubsection{Incorporation of Perceptual Loss Functions} 
+To tackle the relatively high Fréchet Inception Distance (FID) scores observed, perceptual loss components, such as those based on VGG or LPIPS, will be integrated into the training process. This strategic addition aims to improve the perceptual quality of the generated outputs by directly aligning the representations learned by the model with human visual perception.
+
+\subsubsection{Metrics Expansion and Hyperparameter Tuning} 
+Comprehensive evaluation will be conducted by expanding the metrics to include Structural Similarity Index (SSIM) and Peak Signal-to-Noise Ratio (PSNR). Moreover, hyperparameter tuning will be pursued by experimenting with larger codebooks of 2048 and 4096, along with varying embedding dimensions to bolster the model's capacity based on available computational resources.
+
+\subsubsection{Logging and Analysis Enhancements} 
+To facilitate a more systematic analysis and tracking of experimental outcomes, a logging framework will be established. Key metrics such as code usage distributions and the cosine similarity of transported gradients will be empirically logged to confirm the anticipated angle-preserving properties of the proposed methodologies.
+
+All further experiments will be documented thoroughly, providing insights that can lead to incremental yet significant improvements in VQ-VAE performance.
+```

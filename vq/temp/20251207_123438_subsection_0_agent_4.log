@@ -1,0 +1,61 @@
+```latex
+\subsection{Encoder}
+
+The Encoder is a fundamental component of our proposed framework, tasked with transforming raw images into effective latent representations that are ideal for subsequent quantization. By extracting crucial features from the input images, the Encoder significantly enhances the overall performance of the model. The latent representations produced by the Encoder serve as input for the Vector Quantizer, playing a vital role in dimensionality reduction while preserving essential characteristics of the data.
+
+\textbf{Input:} Raw images ($x$);  
+\textbf{Output:} Latent representations ($z_e$).  
+
+\textbf{Workflow:}  
+\[
+    x \xrightarrow{\text{Encoder}} z_e
+\]
+
+\subsubsection{Architecture}
+
+The Encoder adopts a Convolutional Neural Network (CNN) architecture composed of multiple layers that progressively extract hierarchical spatial features from the images. The primary elements of the Encoder include:
+
+1. **Convolutional Layers**: These layers implement a sequence of convolution operations, effectively capturing intricate spatial patterns in the input data. The initial layer processes the raw image, followed by several convolutional blocks designed to downsample the spatial dimensions while enriching the depth of feature maps. The mathematical representation for the first convolutional layer is given by:
+
+   \[
+   z_1 = \text{ReLU}(\text{Conv2D}(x)),
+   \]
+
+   where \(z_1\) represents the feature maps obtained from the first convolutional layer operating on the raw image \(x\). Each subsequent layer builds upon the representations established by previous layers, thereby enhancing the depth and quality of the information extracted.
+
+   \textbf{Input:} Raw images ($x$);  
+   \textbf{Output:} Feature maps ($h$).  
+
+   \textbf{Workflow:}  
+   \[
+   x \xrightarrow{\text{Convolutional Layers}} h
+   \]
+
+2. **Residual Stack**: To augment the representational capacity of the Encoder and to mitigate gradient propagation issues commonly associated with deep networks, a Residual Stack is integrated within the architecture. This design employs skip connections that facilitate efficient gradient flow during backpropagation, particularly in deeper networks. The transformation processed by the residual structure can be expressed as follows:
+
+   \[
+   z_e = h + F(h),
+   \]
+
+   where \(F(h)\) denotes the operations executed by the residual block on the feature maps \(h\). This architecture effectively alleviates the vanishing gradient problem, which is often a significant challenge in deep learning frameworks.
+
+   \textbf{Input:} Feature maps ($h$);  
+   \textbf{Output:} Enhanced latent representations ($z_e$).  
+
+   \textbf{Workflow:}  
+   \[
+   h \xrightarrow{\text{Residual Stack}} z_e
+   \]
+
+3. **Gumbel-Softmax Sampling**: To further enhance gradient flow during training, the Encoder employs Gumbel-Softmax sampling, a sophisticated technique facilitating the optimization of discrete representations while maintaining the continuity of the loss landscape. The mathematical formulation governing this operation is given by:
+
+   \[
+   y = \text{softmax}\left(\frac{\text{logits} + gumbel}{\text{temperature}}\right),
+   \]
+
+   where \(gumbel\) is sampled from a Gumbel distribution, allowing for a smoother transition and optimization process, thereby enhancing the efficiency of the encoding mechanism.
+
+Through this multi-stage operational flow, the Encoder effectively captures key latent attributes from raw input images, laying a robust foundation for quantization in the subsequent stages. The meticulous extraction of high-quality latent representations is indispensable for improving the fidelity and overall performance of the generative model.
+
+Based on established theoretical insights from the literature \citep{NeuralDiscreteRepresentationLearning}, the Encoder adeptly addresses the complexities associated with quantizing high-dimensional data. Its architecture, characterized by advanced elements such as residual connections, hierarchical convolutional layers, and Gumbel-Softmax sampling, is meticulously designed to facilitate efficient learning while ensuring high fidelity in the resulting image reconstructions. Ultimately, these enhancements contribute significantly to the Encoder's capability to optimize performance while guaranteeing high-fidelity image outputs.
+```

@@ -1,0 +1,51 @@
+```latex
+\subsection{Encoder}
+The encoder component is critical in the VQ-VAE architecture as it transforms input images into a lower-dimensional latent representation, facilitating the downstream vector quantization process. This encoder is constructed as a deep convolutional neural network (CNN) enriched with residual connections, which are essential for effective feature extraction and improved gradient flow during training. The architecture consists of multiple convolutional layers followed by a series of residual stacks that enhance the expressiveness of the learned features.
+
+The encoder operates on input images having dimensions $(C, H, W)$, where $C$ represents the number of channels, while $H$ and $W$ correspond to the height and width of the images, respectively. The output of the encoder is a set of compressed latent representations with dimensions $(D, H', W')$, where $D$ denotes the dimensionality of the latent space, and $H'$ and $W'$ represent the reduced spatial dimensions after processing.
+
+\begin{align*}
+\text{Input:} & \quad \text{Images of size } (C, H, W) \\
+\text{Output:} & \quad \text{Latent representations of size } (D, H', W') \\
+\text{Workflow:} & \quad \text{Input Images } \rightarrow \text{Convolutional Layers } \rightarrow \text{Residual Stacks } \rightarrow \text{Latent Representations
+} 
+\end{align*}
+
+\subsubsection{Residual Block}
+Each residual block is designed to facilitate the training of deep networks by introducing skip connections, which help to mitigate the vanishing gradient problem. Specifically, the block transforms input feature maps of size $(C, H, W)$ through non-linearities and convolutional operations, and subsequently adds them back to the original input. 
+
+The structure is defined as follows:
+\begin{align*}
+\text{Input:} & \quad \text{Feature maps of size } (C, H, W) \\
+\text{Output:} & \quad \text{Enhanced feature maps of size } (C, H, W) \\
+\text{Workflow:} & \quad \text{Input Feature Maps } \rightarrow \text{Convolutional Transformations } \rightarrow \text{Residual Addition } \rightarrow \text{Enhanced Feature Maps}
+\end{align*}
+This approach improves the representational capacity of the model and contributes positively to learning intricate patterns in the input data.
+
+\subsubsection{Residual Stack}
+Composed of multiple residual blocks, the residual stack significantly augments the feature extraction process by allowing the network to learn a richer set of features. Each block's design ensures that the gradients can flow through the network during backpropagation, which lessens the risk of degradation when the depth of the model is increased.
+
+\begin{align*}
+\text{Input:} & \quad \text{Feature maps from the preceding layer of size } (C, H, W) \\
+\text{Output:} & \quad \text{Enhanced feature maps processed through the stack} \\
+\text{Workflow:} & \quad \text{Input Feature Maps } \rightarrow \text{Multiple Residual Blocks } \rightarrow \text{Enhanced Feature Maps}
+\end{align*}
+
+\subsubsection{Encoder Architecture}
+The overall encoder architecture is a sequential composition of convolutional layers followed by the residual stack. It begins with initial convolutional layers that downsample the input images while extracting essential spatial features. The layers utilize ReLU activations and become progressively deeper as outlined below:
+
+1. A first convolutional layer reduces the spatial dimensions to $(H/2, W/2)$, followed by a ReLU activation.
+2. A second convolutional layer further downscales the dimensions to $(H/4, W/4)$ while enhancing feature representation.
+3. A residual stack is then employed, consisting of two residual blocks designed to refine the features extracted by the initial layers.
+4. Finally, a convolutional layer projects the features into the latent space of size $(D, H', W')$, where the latent dimension $D$ is specified by the embedding parameters.
+
+By designing the encoder in this fashion, the framework ensures that the latent representation captures the relevant information from the input images while enabling efficient processing and enhancing overall performance.
+
+\[
+\text{Encoder's Forward Pass: } z_e = \text{Encoder}(x)
+\]
+Where $x$ is the input image and $z_e$ corresponds to the resulting latent representation.
+
+The integration of these components into the encoder results in an architecture capable of effectively learning and representing complex variations in input data through structured, hierarchical feature extraction.
+
+```

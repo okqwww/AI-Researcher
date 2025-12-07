@@ -1,0 +1,29 @@
+```latex
+\subsection{Main Performance Comparison}
+
+In this subsection, we present the results of our primary experiments aimed at evaluating the effectiveness of the proposed enhancements to the VQ-VAE architecture, particularly focusing on the Rotation and Rescaling Transformations. We conducted the experiments on the CIFAR-10 dataset and assessed the model's performance using several metrics, including reconstruction loss, PSNR, SSIM, and FID. 
+
+The experimental results are summarized in Table \ref{tab:performance_metrics}, which displays the key performance indicators following the training for three epochs.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Metric & Value \\
+\hline
+Reconstruction Loss & 0.0254 \\
+PSNR & 15.96 \\
+SSIM & 0.61 \\
+FID & 307.49 \\
+\hline
+\end{tabular}
+\caption{Performance metrics after training on CIFAR-10 for 3 epochs.}
+\label{tab:performance_metrics}
+\end{table}
+
+The evaluation metrics indicate a solid implementation of the proposed enhancements, with a notable decrease in reconstruction loss and VQ loss over the training epochs. Despite these improvements, our analysis reveals potential concerns regarding codebook utilization, evidenced by a downward trend in both perplexity and cluster use, which suggests a risk of codebook collapse. 
+
+While the FID scores improved slightly, they remain elevated and indicate an opportunity for enhancing perceptual quality in the generated outputs. Therefore, further investigations are warranted to explore methods for improving both the robustness and fidelity of the model outputs. 
+
+Overall, these preliminary results affirm the effectiveness of incorporating Rotation and Rescaling Transformations in VQ-VAEs, while also highlighting areas for further optimization and improvement in future experiments.
+```

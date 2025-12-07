@@ -18,12 +18,13 @@ def search_arxiv(query, max_results=10):
         list: list of papers info
     """
     # 构建API URL
-    base_url = 'http://export.arxiv.org/api/query?'
-    search_query = urllib.parse.quote(query)
+    base_url = 'https://export.arxiv.org/api/query?'
+    # 用双引号包裹标题，确保搜索完整短语而不是单词 OR
+    # search_query = urllib.parse.quote(f'"{query}"')
     
     # 设置API参数
     params = {
-        'search_query': f'ti:{search_query}',
+        'search_query': f'ti:"{query}"',
         'start': 0,
         'max_results': max_results,
         'sortBy': 'relevance',
@@ -32,10 +33,11 @@ def search_arxiv(query, max_results=10):
     
     # 构建完整的查询URL
     query_url = base_url + urllib.parse.urlencode(params)
-    
+    print(f"Searching arXiv with URL: {query_url}")
     # 发送请求并解析结果
     response = feedparser.parse(query_url)
-    
+    print(f"Response status: {response.status}")
+    print(f"Response entries count: {len(response.entries)}")
     # 提取论文信息
     papers = []
     for entry in response.entries:
@@ -108,7 +110,7 @@ def download_arxiv_source(arxiv_url, local_root, workplace_name, title: str):
         paper_id = re.search(r'abs/([^/]+)', arxiv_url).group(1)
         
         # 构建source URL
-        source_url = f'http://arxiv.org/src/{paper_id}'
+        source_url = f'https://arxiv.org/src/{paper_id}'
         
         # 发送请求
         response = requests.get(source_url)

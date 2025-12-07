@@ -1,0 +1,30 @@
+```latex
+\subsection{Decoder}
+The Decoder is a pivotal component of the proposed architecture, tasked with reconstructing high-fidelity images from the quantized latent representations produced by the Vector Quantizer. By leveraging the rich latent features encoded during the modeling process, the Decoder aims to ensure that the generated output closely resembles the original input data, thereby fulfilling the objectives of the generative modeling framework.
+
+\subsubsection{Convolutional Layers in Decoder}
+The Decoder utilizes a series of convolutional layers designed to incrementally reconstruct the spatial dimensions of the input data from the quantized representations. These layers operate by progressively resizing and refining the feature maps, allowing for the generation of outputs that match the original image dimensions.
+
+\paragraph{Workflow:}
+\begin{align*}
+\text{Input:} & \quad \text{Quantized representations } (z_q)\\
+\text{Output:} & \quad \text{Intermediate feature maps for reconstruction } (\hat{h})\\
+\text{Processing:} & \quad z_q \xrightarrow{\text{Convolutional Layers}} \hat{h}
+\end{align*}
+
+The architecture of the Decoder consists of several transposed convolutional layers that apply learnable filters to the latent space representations. This approach allows for the expansion of the latent representation's spatial dimensions while capturing critical spatial hierarchies in the data, enhancing the overall reconstruction quality.
+
+\subsubsection{Output Layer}
+The final component of the Decoder is the Output Layer, which synthesizes the processed information from the preceding layers to produce the final reconstructed images. The Output Layer is designed to ensure that the reconstructed output not only aligns with the original images in content but also adheres to the defined pixel dimensions.
+
+\paragraph{Workflow:}
+\begin{align*}
+\text{Input:} & \quad \text{Intermediate feature maps } (\hat{h})\\
+\text{Output:} & \quad \text{Final reconstructed images } (\hat{x})\\
+\text{Processing:} & \quad \hat{h} \xrightarrow{\text{Output Layer}} \hat{x}
+\end{align*}
+
+The Output Layer employs a sigmoid activation function to constrain pixel values to the range [0, 1], ensuring that the final images adhere to standard formats. This carefully structured architecture not only enhances the fidelity of the reconstructions but also contributes to the overall stability and performance of the generative model.
+
+By integrating the learned quantized representations and utilizing advanced convolutional techniques, the Decoder effectively bridges the gap between abstract latent features and interpretable visual outputs, thereby enriching the overall modeling capacity of the VQ-VAE framework enhanced by the Rotation-Rescaling Transform (RRT).
+```

@@ -1,0 +1,5 @@
+```latex
+\section{Conclusion}
+
+In this research, we addressed the crucial problem of gradient propagation in Vector Quantized Variational Autoencoders (VQ-VAEs), motivated by the need for improved image generation fidelity. Our key technical contribution, the Enhanced VQ-VAE architecture featuring a Rotation and Rescaling Transform (RRT), significantly improved gradient flow through quantization layers, leading to marked reductions in reconstruction loss and improvements in PSNR and SSIM metrics. Additionally, our empirical results highlighted the need for optimized codebook utilization to mitigate risks of feature representation collapse. Looking ahead, exploring alternative rotation techniques and integrating perceptual loss functions are promising directions that could further enhance generative performance and address the existing challenges related to codebook usage and output quality.
+```

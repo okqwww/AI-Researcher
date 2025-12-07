@@ -43,6 +43,8 @@ CHEEP_MODEL = os.getenv('CHEEP_MODEL', "gpt-4o-mini-2024-07-18")
 
 # GPUS = os.getenv('GPUS', "all")
 GPUS = os.getenv('GPUS', None)
+# Platform for docker (e.g., linux/amd64, linux/arm64)
+PLATFORM = os.getenv('PLATFORM', 'linux/amd64')
 
 FN_CALL = str_to_bool(os.getenv('FN_CALL', True))
 API_BASE_URL = os.getenv('API_BASE_URL', None)

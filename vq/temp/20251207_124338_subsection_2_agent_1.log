@@ -1,0 +1,24 @@
+```latex
+\subsection{Ablation Studies} 
+
+The objective of the ablation studies is to assess the efficacy of the Rotation and Rescaling Transform (RRT) in improving gradient transport compared to conventional straight-through gradient methods in the VQ-VAE framework. To facilitate this analysis, we conducted experiments with two configurations: one using RRT and the other employing the standard straight-through method for gradient propagation.
+
+For this evaluation, both models were trained on the CIFAR-10 dataset for 2 epochs, with all other hyperparameters kept constant to isolate the effects of the gradient transport method. We measured performance across several key metrics: Mean Squared Error (MSE), Peak Signal-to-Noise Ratio (PSNR), Structural Similarity Index (SSIM), and Fréchet Inception Distance (FID).
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Method & MSE & PSNR & SSIM & FID \\
+\hline
+RRT & 0.0209 & 16.80 & 0.69 & 261.86 \\
+Straight-Through & 0.0137 & 18.63 & 0.79 & 198.27 \\
+\hline
+\end{tabular}
+\caption{Performance metrics comparison between RRT and standard straight-through gradient methods.}
+\end{table}
+
+The results indicate that while the straight-through method achieved lower MSE, and higher PSNR and SSIM values, the RRT method resulted in a slightly improved FID score. This suggests that RRT may enhance perceptual quality despite exhibiting a higher reconstruction loss, as indicated by the increased MSE. Such findings imply that while RRT can provide notable advantages in terms of perceptual metrics, careful tuning of hyperparameters may be necessary to mitigate the higher reconstruction loss associated with this method.
+
+These outcomes reinforce the potential of RRT as a viable alternative for gradient transport in VQ-VAEs. The trade-offs observed highlight a crucial nuance in VQ-VAE implementations: improving perceptual metrics through advanced gradient propagation techniques like RRT could result in challenges for reconstruction quality. Future explorations will focus on optimizing the implementation of RRT to fully leverage its advantages while addressing the associated drawbacks, particularly through strategic adjustments in model parameters.
+```

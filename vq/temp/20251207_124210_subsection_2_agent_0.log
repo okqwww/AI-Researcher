@@ -1,0 +1,53 @@
+```latex
+\subsection{Generative Diffusion Models}
+
+Recent advancements in generative diffusion models have sparked significant interest due to their ability to produce high-quality synthetic data across various modalities. A pivotal paper, "High-Resolution Image Synthesis with Latent Diffusion Models" \cite{rombach2021highresolution}, introduced latent diffusion models (LDMs), which combine latent variable modeling with diffusion processes to achieve state-of-the-art performance in image generation tasks. This work established a framework that efficiently leverages the latent space to enhance computational efficiency while maintaining high synthesis quality.
+
+The integration of classifier-free guidance has been especially noteworthy, facilitating text-guided image synthesis \cite{blatmann2022retrieval}. This technique, which eliminates the need for a separate classifier, has shown to significantly reduce computational overhead while maintaining the quality of generated outputs. Subsequent models, such as those developed by Stability AI in their Stable Diffusion projects \cite{stablediffusion2022}, have built on these foundations, demonstrating the capability to generate images conditioned on both textual prompts and other modalities, thereby expanding their applicability in creative and practical use cases.
+
+Critically, while the innovations in generative diffusion models offer substantial advances, challenges remain. Issues relating to the artifacts produced during sampling processes and ensuring the diversity of generated samples have been highlighted in ongoing research. For instance, stabilizing the distribution of outputs while scaling the models poses a technical challenge that continues to impede broader deployment \cite{compvis2021latentdiffusion}. As such, future research directions not only aim to enhance the efficiency of these models but also focus on refining sampling techniques and addressing diversification challenges.
+
+This work aims to leverage the strengths of generative diffusion models, incorporating their advanced sampling methodologies and improved computational efficiencies to enhance multivariate conditional generation processes within our proposed framework.
+``` 
+
+### References
+```latex
+\bibliographystyle{plain}
+\bibliography{references}
+
+@article{rombach2021highresolution,
+  title={High-Resolution Image Synthesis with Latent Diffusion Models},
+  author={Rombach, Robin and Blattmann, Andreas and Lorenz, Dominik and Esser, Patrick and Ommer, Bj{\"o}rn},
+  year={2021},
+  eprint={2112.10752},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV}
+}
+
+@article{blatmann2022retrieval,
+  title={Retrieval-Augmented Diffusion Models},
+  author={Blattmann, Andreas and Rombach, Robin and Oktay, Kaan and Ommer, Bj{\"o}rn},
+  year={2022},
+  eprint={2204.11824},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV}
+}
+
+@misc{stablediffusion2022,
+  title={Stable Diffusion: A Latent Text-to-Image Diffusion Model},
+  author={Stability AI},
+  year={2022},
+  url={https://github.com/CompVis/stable-diffusion}
+}
+
+@article{compvis2021latentdiffusion,
+  title={High-Resolution Image Synthesis with Latent Diffusion Models},
+  author={Rombach, Robin and Blattmann, Andreas and Lorenz, Dominik and Esser, Patrick and Ommer, Bj{\"o}rn},
+  year={2022},
+  eprint={2112.10752},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV}
+}
+``` 
+
+This provides a comprehensive overview of generative diffusion models, citing relevant literature and emphasizing the connection to your proposed work.

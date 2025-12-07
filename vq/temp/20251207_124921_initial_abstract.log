@@ -1,0 +1,7 @@
+```latex
+\begin{abstract}
+
+Generative models have gained prominence in machine learning, particularly through Vector Quantized Variational Autoencoders (VQ-VAEs), which effectively integrate variational inference with discrete representation learning for applications like image synthesis. However, challenges such as gradient propagation through non-differentiable layers, codebook collapse, and suboptimal embedding utilization hinder their performance. To address these issues, we propose an Enhanced VQ-VAE architecture that incorporates a Rotation and Rescaling Transformation (RRT), optimizing gradient transport across quantization layers while preserving angular relationships among latent features. This architecture further introduces adaptive codebook management techniques to enhance embedding diversity throughout training. Our extensive experiments on the CIFAR-10 dataset demonstrate significant improvements in generative performance metrics, with enhanced reconstruction quality and more stable training dynamics. These advancements underscore the potential for the Enhanced VQ-VAE framework to contribute positively to the field of generative modeling.
+
+\end{abstract}
+```

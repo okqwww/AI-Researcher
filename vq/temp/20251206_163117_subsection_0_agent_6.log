@@ -1,0 +1,55 @@
+```latex
+\subsection{Encoder}
+
+The encoder is a pivotal component of the Vector Quantized Variational Autoencoder (VQ-VAE) architecture, responsible for transforming input images into compact latent representations that facilitate efficient quantization. Utilizing a deep Convolutional Neural Network (CNN) architecture, the encoder incorporates multiple convolutional layers interspersed with residual blocks to enhance feature extraction and maintain gradient flow during backpropagation.
+
+The design of the encoder adheres to a hierarchical structure, initiating with a sequence of convolutional operations that progressively downsample the spatial dimensions of the input, followed by a series of residual blocks aimed at fine-tuning the learned feature representations. Given an input image characterized by dimensions $(C, H, W)$—where \( C \) indicates the number of channels, and \( H \) and \( W \) represent the height and width respectively—the output of the encoder comprises latent representations with dimensions $(D, H', W')$, where \( D \) is the dimensionality of the latent space, and \( H' \) and \( W' \) are the reduced spatial dimensions resulting from the encoding process.
+
+The workflow of the encoder can be succinctly summarized as:
+
+\begin{align*}
+\text{Input:} & \quad \text{Images of size } (C, H, W) \\
+\text{Output:} & \quad \text{Latent representations of size } (D, H', W') \\
+\text{Workflow:} & \quad \text{Input Images } \rightarrow \text{Convolutional Layers } \rightarrow \text{Residual Stacks } \rightarrow \text{Latent Representations}
+\end{align*}
+
+\subsubsection{Residual Block}
+Integral to the encoder, the residual blocks mitigate issues commonly linked with the training of deeper networks, especially gradient degradation. By employing skip connections, these blocks ensure a more effective gradient flow throughout the network. Each block processes input feature maps of size $(C, H, W)$ through a series of convolutional layers complemented by non-linear activation functions, followed by the addition of the original input. This residual addition allows for the efficient learning of the differences in feature representations.
+
+The input-output transformation in the residual block can be expressed as follows:
+
+\begin{align*}
+\text{Input:} & \quad \text{Feature maps of size } (C, H, W) \\
+\text{Output:} & \quad \text{Enhanced feature maps of size } (C, H, W) \\
+\text{Workflow:} & \quad \text{Input Feature Maps } \rightarrow \text{Convolutional Transformations } \rightarrow \text{Residual Addition } \rightarrow \text{Enhanced Feature Maps}
+\end{align*}
+
+\subsubsection{Residual Stack}
+The residual stack is a critical feature of the encoder that aggregates multiple residual blocks, thereby augmenting the model's ability to extract and refine rich feature representations. This combination allows the architecture to discern more complex features while ensuring that gradient flow remains coherent, thus safeguarding against information loss across multiple layers. The strategic construction of the residual stack is vital for the successful training of intricate models where depth is a factor.
+
+This component can be detailed as follows:
+
+\begin{align*}
+\text{Input:} & \quad \text{Feature maps from the preceding layer of size } (C, H, W) \\
+\text{Output:} & \quad \text{Enhanced feature maps processed through the stack} \\
+\text{Workflow:} & \quad \text{Input Feature Maps } \rightarrow \text{Multiple Residual Blocks } \rightarrow \text{Enhanced Feature Maps}
+\end{align*}
+
+\subsubsection{Encoder Architecture}
+The architecture of the encoder is meticulously designed to integrate several convolutional layers alongside residual stacks for comprehensive input image processing. The encoding sequence is delineated as follows:
+
+\begin{itemize}
+    \item \textbf{First Convolutional Layer:} This layer reduces the input image dimensions to $(H/2, W/2)$ while introducing non-linearity through a ReLU activation function.
+    \item \textbf{Second Convolutional Layer:} Further reduction in spatial dimensions occurs, bringing them down to $(H/4, W/4)$, which enables a deeper extraction of feature representations.
+    \item \textbf{Residual Stack:} Comprising multiple residual blocks, this segment of the encoder enhances and refines features derived from the preceding convolutional layers.
+    \item \textbf{Final Projection Layer:} The concluding convolutional layer projects the concatenated features into the latent space, producing dimensions $(D, H', W')$, guided by specified hyperparameters.
+\end{itemize}
+
+This structured architecture guarantees that the resultant latent representations efficiently encapsulate essential information conveyed by the input images, thereby facilitating subsequent processing steps and significantly enhancing overall model performance. Mathematically, the encoder's operation can be succinctly represented as:
+
+\[
+z_e = \text{Encoder}(x)
+\]
+
+where \( x \) denotes the input image and \( z_e \) designates the latent representation generated by the encoder. This multifaceted architecture empowers the encoder to adeptly learn and accurately reflect the intricate variations present in the input data through a sequential and hierarchical feature extraction process.
+```

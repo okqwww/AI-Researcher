@@ -1,0 +1,29 @@
+```latex
+\subsection{Decoder}
+
+The decoder in the Vector Quantized Variational Autoencoder (VQ-VAE) is pivotal in reconstructing images from the quantized latent representations outputted by the vector quantizer. Functioning as a counterpart to the encoder, the decoder architecture is symmetrically designed to recover features from a lower-dimensional latent space back to the original image dimensions. This reconstruction process is crucial for maintaining the quality and fidelity of the output images and is achieved through a series of transposed convolutional layers that gradually upscale the feature maps, supplemented by residual blocks that enhance feature representation.
+
+The decoding process consists of several essential steps: the decoder receives quantized latent representations as input, progresses through a cascade of transposed convolutional layers, and utilizes residual blocks for the refinement of extracted features. The culmination of this decoding workflow is the output of reconstructed images that correspond to the original input dimensions. Mathematically, this can be represented as:
+
+\begin{equation}
+\mathbf{x}_{\text{recon}} = \text{Decoder}(\text{Quantized Representations}),
+\end{equation}
+
+where $\mathbf{x}_{\text{recon}}$ signifies the reconstructed image, illustrating the decoder's ability to effectively recover intricate image features during the reconstruction process.
+
+\subsubsection{Transposed Convolutions}
+Transposed convolutions are integral to mapping quantized latent representations back to their original spatial dimensions. This operation facilitates the learning of essential spatial features required for effective image reconstruction. The procedure commences with an initial transposed convolution, which expands the dimensions of the latent feature maps. This is followed by further transposed convolutions that finetune the outputs, ensuring they align with the target image dimensions.
+
+\textbf{Input:} Quantized latent vectors of size $(D, H', W')$, where $D$ represents the dimensionality of the latent representations, and $(H', W')$ denote the spatial dimensions. \\
+\textbf{Output:} Intermediate feature maps of size $(C, H, W)$, where $C$ denotes the number of output channels corresponding to the final image dimensions. \\
+\textbf{Workflow:} Quantized Representations $\rightarrow$ Transposed Convolution Operations $\rightarrow$ Upscaled Feature Maps.
+
+\subsubsection{Residual Stack in Decoder}
+Mirroring the encoder's architecture, the decoder integrates a residual stack consisting of multiple residual blocks designed to enhance feature representations acquired during the transposed convolution phase. This architectural design not only enriches feature extraction but also mitigates the degradation typically encountered in deeper neural networks, thereby ensuring that the final output closely resembles the input images. The inclusion of skip connections within the residual blocks substantially facilitates gradient flow, enabling the model to capture complex, non-linear mappings effectively during the reconstruction process.
+
+\textbf{Input:} Feature maps emerging from the transposed convolution operations, sized $(C, H, W)$. \\
+\textbf{Output:} Processed output feature maps maintain the size $(C, H, W)$, ultimately prepared for image reconstruction. \\
+\textbf{Workflow:} Input Feature Maps $\rightarrow$ Residual Block Transformations $\rightarrow$ Final Output Feature Maps.
+
+The fusion of transposed convolutions and the residual stack empowers the VQ-VAE decoder with the robust capability to convert discrete, quantized latent representations back into a continuous pixel space. This architectural design not only supports high-fidelity image reconstructions but also ensures meticulous preservation of subtle details and textures, significantly enhancing the overall effectiveness of the VQ-VAE framework. Furthermore, careful attention to key parameters such as the codebook size, commitment loss, and training configurations, including the implementation of an Exponential Moving Average (EMA) for codebook updates, collectively contribute to stabilizing the learning process and preventing codebook collapse over time. This holistic approach amplifies both the fidelity and robustness of the VQ-VAE model's output.
+```

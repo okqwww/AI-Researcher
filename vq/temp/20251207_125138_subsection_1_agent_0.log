@@ -1,0 +1,18 @@
+```latex
+\subsection{Latent Diffusion Models}
+
+Latent Diffusion Models (LDMs) represent a significant advancement in generative modeling, particularly for high-resolution image synthesis. One of the seminal works in this domain is the paper titled \emph{High-Resolution Image Synthesis with Latent Diffusion Models} by Rombach et al. \cite{rombach2021highresolution}, which introduced novel architectures that combine latent representation learning with diffusion processes. LDMs effectively compress high-dimensional data into lower-dimensional latent spaces, allowing for the generation of higher-quality images while maintaining efficiency in computation.
+
+Building upon foundational concepts from Variational Autoencoders (VAEs) and discrete representation learning \cite{neural_discrete_representation_learning}, LDMs leverage a two-step process—encoding and decoding—to manage latent representations. The main technical innovation of LDMs is their ability to perform diffusion in the latent space rather than in the pixel space. This shift not only enhances sampling efficiency but also improves the quality of generated images by allowing for more manageable noise reduction in lower-dimensional representations.
+
+Stability AI's implementation of LDMs, highlighted in their Stable Diffusion work \cite{stability_ai_stablediffusion}, further demonstrates the versatility of LDMs across a variety of creative tasks, such as text-to-image synthesis and image inpainting. The adaptability of these models has allowed them to be integrated into various applications, showcasing their potential beyond mere image generation.
+
+Despite these advancements, several challenges remain with respect to scaling LDMs and reducing artifacts during the sampling process. As LDMs scale up to generate more complex images, preserving diversity in the generative outputs while minimizing artifacts becomes increasingly difficult. Moreover, a deeper understanding of the principles guiding the trade-offs in reconstruction and generation quality is necessary.
+
+The relevance of LDMs to the proposed work lies in their ability to efficiently leverage latent representations to enhance synthesis quality. By utilizing LDMs alongside existing methodologies, such as those proposed in the context of variational and discrete representation learning \cite{edoardo_botta_gmvae, kohonen_vae}, the proposed approach aims to address current limitations while pushing forward the capabilities of generative models.
+
+\bibliographystyle{plain}
+\bibliography{references}
+```
+
+In this LaTeX code, references such as `\cite{rombach2021highresolution}` correspond to specific papers mentioned, and the list at the end can be populated in the associated `references.bib` file for proper citation formatting.

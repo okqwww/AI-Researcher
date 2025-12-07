@@ -1,0 +1,11 @@
+```latex
+\subsection{Generative Diffusion Models}
+
+Generative diffusion models have gained considerable attention due to their remarkable capabilities in generating high-quality images and other data modalities. A primary innovation in this domain includes the integration of text guidance for synthesis, which has significantly improved the utility of these models in applications like visual art creation and content generation. Noteworthy advancements include Classifier-Free Guidance, which has enabled models to yield striking outputs while reducing computational costs \cite{rombach2021highresolution}.
+
+Recent successful implementations, such as Stable Diffusion \cite{stabilityai2022}, illustrate the effectiveness of diffusion models in text-to-image generation. Stable Diffusion combines latent space operations with diffusion processes, allowing for the generation of high-resolution images while restricting the model’s computational requirements. The architecture, built upon techniques from latent diffusion \cite{rombach2021highresolution}, demonstrates that conditioning on text embeddings can lead to a diverse array of synthesized images from simple textual descriptions.
+
+Despite these advances, challenges remain prominent in the field. Effective sampling techniques that balance fidelity and speed are still a topic of exploration, with ongoing research aimed at enhancing the robustness of generative outputs \cite{blattmann2022}. Moreover, integrating retrieval-augmented generation processes into these models is a promising direction, potentially improving contextual relevance and diversity in output without diminishing quality \cite{rombach2022retrieval}.
+
+Our proposed work builds on the ongoing trends in generative diffusion models by leveraging these advancements to enhance multivariate conditional generation capabilities. By employing improved sampling strategies and integrating recent architectural innovations, we aim to address some of the existing limitations while pushing the boundaries of creativity in generative models.
+```

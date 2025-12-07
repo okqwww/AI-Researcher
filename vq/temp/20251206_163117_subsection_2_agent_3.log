@@ -1,0 +1,29 @@
+```latex
+\subsection{Decoder}
+
+The decoder of the Vector Quantized Variational Autoencoder (VQ-VAE) plays a crucial role in reconstructing images from the quantized latent representations produced by the vector quantizer. Structurally, it is designed as a mirror of the encoder architecture, serving primarily to project lower-dimensional latent features back into the original image space while ensuring high quality and fidelity of the reconstructed images. This process is facilitated through a series of transposed convolutional layers accompanied by residual blocks, which together enhance the accuracy of the output images.
+
+The decoding workflow consists of several key steps: the decoder takes the quantized latent representations as input, applies a succession of transposed convolutional layers to progressively upscale the spatial dimensions, and employs residual blocks for further refinement of the features. The final output comprises reconstructed images that match the original input dimensions. Mathematically, this operation can be expressed as:
+
+\begin{equation}
+\mathbf{x}_{\text{recon}} = \text{Decoder}(\text{Quantized Representations}),
+\end{equation}
+
+where $\mathbf{x}_{\text{recon}}$ denotes the reconstructed image, showcasing the decoder's capability to effectively recover intricate image features during the reconstruction phase.
+
+\subsubsection{Transposed Convolutions}
+Transposed convolutions are essential for remapping quantized latent representations back to their original dimensions, enabling the decoder to learn vital spatial features necessary for effective image reconstruction. The process begins with a transposed convolution that initially expands the latent feature maps, followed by additional transposed convolutions that fine-tune the output, ensuring it aligns with the desired image dimensions.
+
+\textbf{Input:} Quantized latent vectors of size $(D, H', W')$, where $D$ is the dimensionality of the latent representations, and $(H', W')$ indicate the spatial dimensions. \\
+\textbf{Output:} Intermediate feature maps of size $(C, H, W)$, where $C$ represents the number of output channels corresponding to the final image dimensions. \\
+\textbf{Workflow:} Quantized Representations $\rightarrow$ Transposed Convolution Operations $\rightarrow$ Upscaled Feature Maps.
+
+\subsubsection{Residual Stack in Decoder}
+In alignment with the encoder, the decoder incorporates a residual stack composed of multiple residual blocks aimed at enhancing the intermediate feature representations obtained throughout the transposed convolution phase. This architecture not only enriches the depiction of features but also mitigates the degradation often encountered in deeper networks, thereby ensuring that the final output closely resembles the input images. The integration of skip connections within the residual blocks significantly facilitates gradient flow, enabling the model to capture complex, non-linear mappings during reconstruction.
+
+\textbf{Input:} Feature maps emerging from the transposed convolution operations, sized $(C, H, W)$. \\
+\textbf{Output:} Processed output feature maps, maintaining size $(C, H, W)$, ultimately ready for image formation. \\
+\textbf{Workflow:} Input Feature Maps $\rightarrow$ Residual Block Transformations $\rightarrow$ Final Output Feature Maps.
+
+The synergistic interaction of transposed convolutions and the residual stack endows the VQ-VAE decoder with a robust ability to effectively translate discrete, quantized latent representations back into a continuous pixel space. This design not only facilitates the accurate reconstruction of high-fidelity images but also assures that subtle details and textures are meticulously preserved, thereby significantly enhancing the overall efficacy of the VQ-VAE framework.
+```

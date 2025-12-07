@@ -1,0 +1,13 @@
+```latex
+\subsection{Variational Autoencoders and Discrete Representation Learning}
+
+Variational autoencoders (VAEs) have gained traction as powerful generative models, with substantial advancements made in discrete representation learning. One key work, "Neural Discrete Representation Learning" by van den Oord et al. (2017), introduced the vector quantized VAE (VQ-VAE), which effectively combines the VAE framework with a discrete latent space, enabling the model to represent complex data distributions more efficiently. The authors utilized vector quantization to learn a set of discrete embeddings from continuous data, significantly improving representation quality for generative tasks.
+
+Building on these concepts, Edoardo Botta’s work further extends the VAE framework by incorporating Gaussian Mixture Models (GMMs) into the latent space, creating the Gaussian Mixture VAE. This approach, presented in "Deep Unsupervised Clustering with Gaussian Mixture Variational Autoencoders," leverages categorical latent variables to describe data distributions as a mixture of multiple Gaussian components, allowing for richer data generation and exploration. The introduction of Gumbel-softmax reparameterization was notably important here to tackle the challenges associated with the optimization of discrete latent variables, which are typically non-differentiable.
+
+The technical foundation of these models hinges on methodologies like Kullback-Leibler (KL) divergence for optimization and the Gumbel-softmax trick for managing discrete latent representations. For instance, the Gumbel-softmax allows for differentiable sampling from a categorical distribution, essential for the training of models that require gradient-based optimization. 
+
+Despite these advancements, several limitations persist within the VAE framework. Challenges remain in optimizing the discrete latent spaces and enhancing the interpretability of the latent representations. Typical VAEs often suffer from issues related to posterior collapse and mode degradation, which can lead to inefficient representations and poor generative performance.
+
+This body of work is particularly relevant to our proposed methods, where we leverage the concepts developed in VQ-VAEs to improve representation learning within diffusion models. By integrating discrete representations, we aim to enhance the efficiency and quality of data generation processes in our framework.
+```

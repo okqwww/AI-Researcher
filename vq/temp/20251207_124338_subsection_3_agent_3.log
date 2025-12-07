@@ -1,0 +1,22 @@
+```latex
+\subsection{Further Experiments}
+
+The goal of the further experiments is to examine various parameters and methodologies to optimize the performance of the proposed Vector Quantized Variational Autoencoder (VQ-VAE). This section builds upon initial experimental findings, focusing on key areas to enhance model efficiency and the quality of generated outputs.
+
+\subsubsection{Codebook Utilization} 
+To address the observed decline in codebook utilization, we will investigate the impact of different Exponential Moving Average (EMA) decay rates and commitment loss (beta) parameters. A grid search will be conducted for EMA decay values ranging from 0.99 to 0.95 and for beta values of 0.5, 0.75, and 1.0. This systematic approach aims to mitigate the collapse of the codebook while maintaining the quality of the learned representations. Furthermore, we will implement a strategy to periodically reinitialize underutilized codes within the VQ-VAE framework to encourage diversity in the learned codes.
+
+\subsubsection{Exploration of Alternative Rotations} 
+In our exploration of alternative rotations, we will compare the traditional Householder reflections with the Rodrigues rotation formula when propagating gradients. This comparative analysis aims to uncover which rotation methodology results in improved training dynamics and model performance. Implementing these techniques could provide insights into more effective gradient transport methods and their effects on the overall performance of the VQ-VAE.
+
+\subsubsection{Incorporation of Perceptual Loss Functions} 
+To tackle the high Fréchet Inception Distance (FID) scores recorded in preliminary experiments, we will integrate perceptual loss components into the training regime. By incorporating losses derived from VGG features or the Learned Perceptual Image Patch Similarity (LPIPS) metric, we expect to enhance the perceptual quality of generated outputs. This introduction of perceptual loss aims to bridge the gap between the model's output and human visual perception, potentially reducing FID scores significantly.
+
+\subsubsection{Metrics Expansion and Hyperparameter Tuning} 
+Our evaluation metrics will be expanded to include the Structural Similarity Index (SSIM) and Peak Signal-to-Noise Ratio (PSNR) alongside the existing FID metrics. We will conduct a comprehensive hyperparameter tuning process, focusing particularly on the effects of varying codebook sizes (1024, 2048, and 4096) and different embedding dimensions (32, 64, and 128). The goal of this tuning effort is to enhance the representational capacity of the model while also being mindful of computational resource constraints.
+
+\subsubsection{Logging and Analysis Enhancements} 
+To streamline the tracking and analysis of experimental outcomes, we will implement a detailed logging framework. This will involve logging essential performance metrics, including code usage distributions and the cosine similarity of transported gradients. Analyzing these logged metrics will provide insights into the angle-preserving properties of the methodologies employed, enabling a rigorous evaluation of their effectiveness.
+
+All further experiments will be meticulously documented, setting the stage for continuous and meaningful enhancements to the performance of the VQ-VAE model.
+```

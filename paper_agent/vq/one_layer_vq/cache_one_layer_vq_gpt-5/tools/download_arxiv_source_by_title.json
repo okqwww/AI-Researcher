@@ -1,0 +1,15 @@
+{
+    "name": "download_arxiv_source_by_title",
+    "args": {
+        "paper_list": [
+            "Neural discrete representation learning",
+            "High-resolution image synthesis with latent diffusion models",
+            "Vector-quantized image modeling with improved vqgan",
+            "Estimation or propagating gradients through stochastic neurons for conditional computation",
+            "Learning transferable visual models from natural language supervision"
+        ],
+        "local_root": "/home/a/AI-Researcher/research_agent/workplace_paper/task_one_layer_vq_gpt-5/workplace",
+        "workplace_name": "workplace"
+    },
+    "result": "Cannot find the paper 'Neural discrete representation learning' in arxiv\nCannot find the paper 'High-resolution image synthesis with latent diffusion models' in arxiv\nCannot find the paper 'Vector-quantized image modeling with improved vqgan' in arxiv\nCannot find the paper 'Estimation or propagating gradients through stochastic neurons for conditional computation' in arxiv\nCannot find the paper 'Learning transferable visual models from natural language supervision' in arxiv"
+}

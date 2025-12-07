@@ -1,0 +1,58 @@
+```latex
+\subsection{Encoder}
+
+The Encoder is a core element of our proposed framework, tasked with converting raw images into compact latent representations suitable for quantization. By capturing and leveraging significant features from the input images, the Encoder plays a crucial role in enhancing the model's overall performance. The latent representations produced by the Encoder constitute the input for the Vector Quantizer, a pivotal stage within the architecture that enables dimensionality reduction while preserving essential data attributes.
+
+\textbf{Input:} Raw images ($x$);  
+\textbf{Output:} Latent representations ($z_e$).  
+
+\textbf{Workflow:}  
+\[
+    x \xrightarrow{\text{Encoder}} z_e
+\]
+
+\subsubsection{Architecture}
+The Encoder is designed based on a Convolutional Neural Network (CNN) architecture, comprising multiple layers that progressively extract hierarchical spatial features from the images. Its significant components include:
+
+1. **Convolutional Layers**: These layers perform a series of convolutional operations to discern intricate spatial patterns in the input data. The initial layer processes the raw image, followed by several convolutional blocks that downsample the spatial dimensions while increasing the depth of feature maps. The computational operation for the first convolutional layer is defined as:
+
+   \[
+   z_1 = \text{ReLU}(\text{Conv2D}(x)),
+   \]
+
+   where \(z_1\) indicates the feature maps obtained after transforming the raw image \(x\) through the first convolutional layer. Each subsequent layer refines the feature map representations, effectively enhancing the depth and quality of information extracted.
+
+   \textbf{Input:} Raw images ($x$);  
+   \textbf{Output:} Feature maps ($h$).  
+
+   \textbf{Workflow:}  
+   \[
+   x \xrightarrow{\text{Convolutional Layers}} h
+   \]
+
+2. **Residual Stack**: To augment the representational capacity of the Encoder and to counteract challenges associated with gradient propagation, we integrate a Residual Stack into the architecture. This structure utilizes skip connections, allowing gradients to flow more effectively during backpropagation, especially in deeper networks. The transformations performed by the residual structure can be mathematically expressed as:
+
+   \[
+   z_e = h + F(h),
+   \]
+
+   where \(F(h)\) denotes the operations applied by the residual block on the feature map \(h\). This design significantly alleviates the vanishing gradient problem commonly encountered in deep learning models.
+
+   \textbf{Input:} Feature maps ($h$);  
+   \textbf{Output:} Enhanced latent representations ($z_e$).  
+
+   \textbf{Workflow:}  
+   \[
+   h \xrightarrow{\text{Residual Stack}} z_e
+   \]
+
+The multi-stage operational flow of the Encoder successfully captures critical latent attributes from raw input images, laying a robust groundwork for quantization in subsequent stages. The extraction of high-quality latent representations is vital to ensuring improved performance and fidelity within the generative model.
+
+In accordance with the theoretical foundations outlined in previous studies \citep{NeuralDiscreteRepresentationLearning}, the Encoder effectively navigates the complexities tied to the quantization of high-dimensional data. Its architecture, characterized by the incorporation of advanced features such as residual connections and hierarchical convolutional layers, is meticulously designed to promote efficient learning while preserving high fidelity in resultant image reconstructions. Notably, the Encoder also utilizes Gumbel-Softmax sampling to enhance gradient flow, offering a sophisticated solution to regularize the encoding process during training, as represented by the mathematical formulation:
+
+\[
+y = \text{softmax}\left(\frac{\text{logits} + gumbel}{\text{temperature}}\right),
+\]
+
+where \(gumbel\) is sampled from a Gumbel distribution, facilitating a smoother transition during the optimization of discrete representations. This feature further solidifies the Encoder’s capability to optimize performance effectively.
+```

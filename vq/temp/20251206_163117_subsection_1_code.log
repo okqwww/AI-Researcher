@@ -1,0 +1,24 @@
+```latex
+\subsection{Vector Quantizer}
+The vector quantization component plays a critical role in the VQ-VAE architecture, whereby it discretizes the continuous latent representations produced by the encoder, thereby enabling a more robust and interpretable representation of the data. This process involves selecting the nearest entries from a learned codebook, effectively mapping continual latent features into discrete codes. The quantization step not only enhances the stability of image reconstruction but also facilitates dedicated feedback loops that promote the optimization of the encoder during training.
+
+The implementation consists of a Vector Quantizer with integrated functionalities for nearest neighbor lookup, as well as a dedicated mechanism for updating the Exponential Moving Average (EMA) of the codebook. This design choice is crucial for maintaining the quality and variety of codebook entries over time, ensuring that they adapt effectively to the latent distribution observed in the training data.
+
+% Input: Latent representations from the encoder.
+% Output: Quantized representations and their corresponding indices.
+% Workflow: Latent Representations $\rightarrow$ Nearest Codebook Indexing $\rightarrow$ EMA Updates $\rightarrow$ Quantized Outputs.
+
+The workflow of the Vector Quantizer can be summarized as follows: Given latent representations from the encoder, the process first involves calculating the Euclidean distances between these representations and the entries in the codebook. This is mathematically formulated as \( d = \| x \|^2 + \| e \|^2 - 2x^\top e \), where \( x \) represents the latent features and \( e \) denotes the codebook vectors. The nearest codebook indices are then determined by minimizing this distance, allowing for efficient quantization.
+
+To promote stable and effective learning, the EMA codebook is employed, which updates the codebook entries based on the observed statistics of the training data. The EMA update mechanism takes the encoded representations and their associated one-hot encodings, which indicate the indices of the nearest codebook entries, and computes the average codes while applying a decay factor to balance the influence of new data against the previous states. This can be expressed as follows:
+\[
+\text{Cluster update: } C_t = \alpha C_{t-1} + (1 - \alpha) N_t,
+\]
+where \( C \) denotes the cluster size, \( N_t \) represents the new cluster statistics, and \( \alpha \) is the decay rate.
+
+The quantization process is further augmented with a novel gradient propagation technique using Householder reflections, which contribute to the stability of the optimization by maintaining directional consistency in the gradient flow. Specifically, gradients are processed through an orthogonal transformation, preserving their angles relative to the codebook vectors.
+
+The overall output of the Vector Quantizer includes both the quantized representations suitable for input to the decoder and several diagnostic metrics, such as commitment loss and codebook usage. The commitment loss term encourages the latent representations to stay close to their quantized counterparts, thereby promoting effective learning dynamics.
+
+In conclusion, the Vector Quantizer is integral to the functionality of the VQ-VAE framework, providing both quantization and learning stability through innovative EMA updates and advanced gradient handling, ultimately leading to improved reconstruction quality and performance.
+```

@@ -116,8 +116,8 @@ class DockerEnv:
                 # 额外检查 tcp_server 是否运行
                 try:
                     port_info = check_container_ports(self.container_name)
-                    assert port_info and (port_info[0] == port_info[1])
-                    available_port = port_info[0]
+                    assert port_info is not None  # 只需要端口映射存在即可
+                    available_port = port_info[0]  # host port
                     self.communication_port = available_port
                     result = self.run_command('ps aux')
                     print("result", result)

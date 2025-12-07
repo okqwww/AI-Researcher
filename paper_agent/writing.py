@@ -6,8 +6,61 @@ from paper_agent.conclusion_composing import conclusion_composing
 from paper_agent.abstract_composing import abstract_composing
 import asyncio
 import argparse
+import os
 from paper_agent.writing_fix import clean_tex_files_in_folder, process_tex_file
 from paper_agent.tex_writer import compile_latex_project
+
+
+def generate_main_tex(target_folder: str, title: str = "Research Paper"):
+    """生成 main.tex 主文件"""
+    main_tex_content = r"""\documentclass[11pt,a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% Title
+\title{""" + title + r"""}
+\author{AI Researcher}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% Abstract
+\input{abstract}
+
+% Introduction
+\input{introduction}
+
+% Related Work
+\input{related_work}
+
+% Methodology
+\input{methodology}
+
+% Experiments
+\input{experiments}
+
+% Conclusion
+\input{conclusion}
+
+\end{document}
+"""
+    main_tex_path = os.path.join(target_folder, "main.tex")
+    with open(main_tex_path, 'w', encoding='utf-8') as f:
+        f.write(main_tex_content)
+    print(f"Generated main.tex at {main_tex_path}")
 
 async def writing(research_field: str, instance_id: str):
     await methodology_composing(research_field, instance_id)
@@ -21,11 +74,14 @@ async def writing(research_field: str, instance_id: str):
     clean_tex_files_in_folder(target_folder)
 
     tex_file_path = f'{research_field}/target_sections/{instance_id}/related_work.tex'
-    bib_file_path = f'{research_field}/target_sections/{instance_id}/iclr2025_conference.bib'
+    bib_file_path = f'{research_field}/target_sections/{instance_id}/references.bib'
     process_tex_file(tex_file_path, bib_file_path)
 
+    # 生成 main.tex
+    generate_main_tex(target_folder, title=instance_id.replace('_', ' ').title())
+
     project_directory = f'{research_field}/target_sections/{instance_id}'
-    main_file = "iclr2025_conference.tex"
+    main_file = "main.tex"
     compile_latex_project(project_directory, main_file)
 
 

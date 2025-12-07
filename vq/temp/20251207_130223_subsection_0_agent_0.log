@@ -1,0 +1,13 @@
+```latex
+\subsection{Variational Autoencoders and Discrete Representation Learning}
+
+Variational Autoencoders (VAEs) have gained significant traction in generative modeling, particularly for tasks involving complex data distributions. One notable advancement in this area is the work by Razavi et al. (2019) on Neural Discrete Representation Learning, which introduces the VQ-VAE (Vector Quantized VAE) framework. This model effectively incorporates vector quantization into the variational inference framework, enabling the learning of discrete latent representations while maintaining a high fidelity in generative tasks. The authors provide a thorough analysis of the benefits of using discrete latent spaces, showing their ability to capture complex structures in data such as images and audio.
+
+Building on these ideas, Edoardo Botta's work expands the concept to Gaussian Mixture VAEs, where categorical latent variables are modeled using a mixture of Gaussians. This approach allows for more nuanced representations of data by leveraging the strengths of both categorical and continuous latent structures. Botta positions his model within the broader context of variational inference techniques, demonstrating how the optimization of the Evidence Lower Bound (ELBO) can be effectively managed using techniques such as KL-divergence and Gumbel-softmax reparameterization.
+
+The technical methodologies employed in these works highlight the challenges of optimizing discrete representations within VAEs. Specifically, the non-differentiability of standard categorical distributions poses a significant barrier for gradient-based optimization. The introduction of the Gumbel-softmax distribution addresses this limitation by providing a continuous approximation to the discrete variables, thus facilitating the backpropagation of gradients. This has paved the way for incorporating VAEs into more complex architectures, including those used in latent diffusion models. 
+
+Despite the advancements, several challenges remain. One key issue is the interpretability of the learned latent representations, which can often be opaque due to their high-dimensional nature. Additionally, improvements in optimization methods are needed to further enhance convergence properties and the generative quality of these models.
+
+Relevance to the proposed work lies in leveraging VQ-VAEs and their Gaussian Mixture counterparts to develop effective representation strategies in diffusion models. By establishing a robust framework for discrete representation learning, we aim to enhance the efficiency and effectiveness of our generative processes, particularly in applications involving high-resolution image synthesis and semantic manipulation.
+```

@@ -1,0 +1,105 @@
+```latex
+\section{Vector Quantized Variational Autoencoders (VQ-VAEs)}
+
+\subsection{Hierarchical Encoder Architecture}
+The encoder in the VQ-VAE framework is pivotal for transforming input images into compact latent representations suitable for quantization. This architecture employs a deep Convolutional Neural Network (CNN) structured hierarchically with multiple convolutional layers and residual blocks, thus enhancing feature extraction and facilitating effective gradient propagation during backpropagation.
+
+Given an input image of dimensions \((C, H, W)\) (where \(C\) denotes the number of channels, while \(H\) and \(W\) represent height and width, respectively), the encoder outputs latent representations of dimensions \((D, H', W')\), with \(D\) indicating the dimensionality of the latent space and \(H'\) and \(W'\) reflecting the reduced spatial dimensions following encoding.
+
+The encoding workflow can be summarized as follows:
+
+\begin{align*}
+\text{Input:} & \quad \text{Images of size } (C, H, W) \\
+\text{Output:} & \quad \text{Latent representations of size } (D, H', W') \\
+\text{Workflow:} & \quad \text{Input Images } \rightarrow \text{Convolutional Layers } \rightarrow \text{Residual Blocks } \rightarrow \text{Latent Representations}
+\end{align*}
+
+\subsubsection{Residual Mechanisms for Gradient Flow}
+To address the challenges of training deep networks, residual blocks are incorporated within the encoder. These blocks utilize skip connections to promote effective gradient flow, enabling more efficient learning. The processing sequence of each residual block is represented mathematically as:
+
+\begin{align*}
+\text{Input:} & \quad \text{Feature maps of size } (C, H, W) \\
+\text{Output:} & \quad \text{Enhanced feature maps of size } (C, H, W) \\
+\text{Workflow:} & \quad \text{Input Feature Maps } \rightarrow \text{Convolutional Transformations } \rightarrow \text{Residual Addition } \rightarrow \text{Enhanced Feature Maps}
+\end{align*}
+
+\subsubsection{Stacking Residual Blocks for Complex Representation}
+The residual stack aggregates multiple residual blocks, enhancing the model's capability to extract and refine complex feature representations while ensuring coherent gradient flow to mitigate information loss across layers. The operational diagram for the residual stack is noted as follows:
+
+\begin{align*}
+\text{Input:} & \quad \text{Feature maps from the preceding layer of size } (C, H, W) \\
+\text{Output:} & \quad \text{Enhanced feature maps following processing through the stack} \\
+\text{Workflow:} & \quad \text{Input Feature Maps } \rightarrow \text{Multiple Residual Blocks } \rightarrow \text{Enhanced Feature Maps}
+\end{align*}
+
+\subsubsection{Encoder Design Specifications}
+The encoder design intricately integrates convolutional layers with residual stacks to optimize the processing of input images, detailed as follows:
+
+\begin{itemize}
+    \item \textbf{Initial Convolutional Layer:} Reduces the input image dimensions to \((H/2, W/2)\) and introduces non-linearity using the ReLU activation function.
+    \item \textbf{Second Convolutional Layer:} Further downsamples the spatial dimensions to \((H/4, W/4)\), facilitating deeper extraction of features.
+    \item \textbf{Residual Stack:} Composed of multiple residual blocks that enrich and refine features obtained from the preceding convolutional layers.
+    \item \textbf{Final Projection Layer:} Transforms the concatenated features into the latent space, resulting in dimensions \((D, H', W')\) as defined by hyperparameters.
+\end{itemize}
+
+The encoder guarantees that the resultant latent representations encompass the critical information relayed by input images, thus effectively facilitating subsequent processing stages. Mathematically, the encoder operation is defined as:
+
+\[
+z_e = \text{Encoder}(x)
+\]
+
+where \(x\) is the input image and \(z_e\) is the resulting latent representation.
+
+\subsection{Discrete Code Generation through Vector Quantization}
+The Vector Quantizer (VQ) component of the VQ-VAE is essential for converting continuous latent representations from the encoder into discrete codes drawn from a learned codebook. This discretization not only enhances stability and interpretability of representations but also fosters effective image reconstruction. The VQ establishes a direct link between the encoder output and the decoder input, strengthening the feedback loop crucial for optimizing encoder training.
+
+To implement quantization efficiently, nearest neighbor search algorithms are employed to minimize computational complexity. An Exponential Moving Average (EMA) strategy is utilized to dynamically update the codebook throughout training, a method crucial for adapting to the evolving distributions of latent features.
+
+The quantization process initiates with the calculation of Euclidean distances between latent representations, denoted as:
+
+\[
+d = \| x \|^2 + \| e \|^2 - 2 x^\top e,
+\]
+
+where \( x \) indicates latent vectors and \( e \) represents codebook vectors. The indices of closest codebook entries are identified by minimizing the computed distances.
+
+The codebook updates via EMA can be formulated as:
+
+\[
+C_t = \alpha C_{t-1} + (1 - \alpha) N_t,
+\]
+
+where \( C_t \) denotes the current codebook state, \( N_t \) encapsulates statistics from the current batch, and \( \alpha \) is a decay factor balancing new information against prior states. 
+
+Additionally, to enhance quantization, the Rotation and Rescaling Transformation employs Householder reflections to preserve gradient directional characteristics during backpropagation, reinforcing stability and mitigating adverse gradient behaviors associated with the non-differentiable nature of the quantization layer.
+
+The VQ ultimately outputs quantized latent representations for the decoder and diagnostic metrics such as commitment loss and codebook utilization statistics. The commitment loss notably encourages alignment between latent representations and corresponding quantized values, thus promoting effective model learning.
+
+In summary, the VQ is integral to the VQ-VAE, substantially enhancing quantization capabilities and contributing to the overall stability and robustness of the learning process through advanced EMA updates and refined gradient management techniques.
+
+\subsection{Symmetrical Decoder Architecture}
+The decoder in the VQ-VAE framework is crucial for transforming quantized latent representations back into images. Architecturally symmetrical to the encoder, the decoder employs a structured sequence of transposed convolutional layers augmented by residual blocks to ensure high-quality reconstruction while preserving the intricate details and structural complexities of input images.
+
+The decoding process is expressed as follows:
+
+\begin{equation}
+\mathbf{x}_{\text{recon}} = \text{Decoder}(\mathbf{z}_{\text{quant}}),
+\end{equation}
+where \(\mathbf{x}_{\text{recon}}\) is the reconstructed output image.
+
+\subsubsection{Transposed Convolution Operations}
+Transposed convolutions are critical for the decoder to revert quantized latent representations back to their original dimensions. The initial transposed convolution expands latent feature map dimensions, followed by layers of transposed convolutions to fine-tune the outputs.
+
+\textbf{Input:} Quantized latent vectors of size \((D, H', W')\). \\
+\textbf{Output:} Intermediate feature maps of size \((C, H, W)\). \\
+\textbf{Workflow:} Quantized Representations \(\rightarrow\) Transposed Convolution Operations \(\rightarrow\) Upscaled Feature Maps.
+
+\subsubsection{Residual Blocks for Feature Refinement}
+Aligning with the encoder, the decoder includes a residual stack comprised of multiple residual blocks to enhance feature representation quality attained during transposed convolutions. This design strategy ameliorates challenges of gradient degradation typically encountered in deep networks.
+
+\textbf{Input:} Feature maps from transposed convolutions of size \((C, H, W)\). \\
+\textbf{Output:} Refined feature maps of the same size \((C, H, W)\). \\
+\textbf{Workflow:} Input Feature Maps \(\rightarrow\) Residual Block Transformations \(\rightarrow\) Final Output Feature Maps.
+
+The interworking of transposed convolutions with the residual stack endows the VQ-VAE decoder with a robust mechanism for reconverting discrete quantized representations into a continuous pixel space, ensuring meticulous retention of details necessary for fulfilling reconstruction objectives. The attention to essential training parameters—including codebook size, commitment loss, and sophisticated techniques such as EMA for codebook updates—collectively stabilizes the learning process, yielding enhanced fidelity and robustness in outputs generated by the VQ-VAE model.
+```

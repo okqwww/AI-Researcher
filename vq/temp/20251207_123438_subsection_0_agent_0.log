@@ -1,0 +1,49 @@
+```latex
+\subsection{Encoder}
+The Encoder is a critical component in our framework, designed to convert raw images into compact latent representations suitable for quantization. By efficiently extracting significant features, the Encoder enhances the performance of the overall model. Its output is utilized as the input for the Vector Quantizer, which plays a vital role in reducing the dimensionality of the data while preserving meaningful patterns.
+
+\textbf{Input:} Raw images ($x$);  
+\textbf{Output:} Latent representations ($z_e$).  
+
+\textbf{Workflow:}  
+\[
+    \text{Raw image } x \xrightarrow{\text{Encoder}} z_e.
+\]
+
+\subsubsection{Architecture}
+The Encoder employs a convolutional neural network (CNN) architecture, comprising multiple layers that progressively capture hierarchical spatial features from the input images. The architecture includes the following key components:
+
+1. **Convolutional Layers**: These layers employ a series of convolutional operations to uncover intricate spatial patterns within the input images. The initial layer processes the input image, followed by successive convolutional blocks that downsample the spatial dimensions while increasing the depth of the feature maps. An example of this operation is given by:
+
+   \[
+   z_1 = \text{ReLU}(\text{Conv2D}(x)),
+   \]
+
+   where \(z_1\) represents the feature maps produced after applying the first convolutional layer to the raw image \(x\).
+
+   \textbf{Input:} Raw images ($x$);  
+   \textbf{Output:} Feature maps ($h$).  
+
+   \textbf{Workflow:}  
+   \[
+   \text{Raw image } x \xrightarrow{\text{Convolutional Layers}} h.
+   \]
+
+2. **Residual Stack**: To enhance its representational power and mitigate issues related to gradient saturation, the Encoder incorporates a Residual Stack. This structure employs skip connections that facilitate improved gradient flow during backpropagation, particularly in deeper layers. The introduction of residual connections tackles the vanishing gradient problem and allows for the preservation of features across various levels in the architecture. The residual transformations can be mathematically represented as:
+
+   \[
+   z_e = h + F(h),
+   \]
+
+   where \(F(h)\) denotes the transformation performed by the residual block on the feature maps \(h\).
+
+   \textbf{Input:} Feature maps ($h$);  
+   \textbf{Output:} Enhanced latent representations ($z_e$).  
+
+   \textbf{Workflow:}  
+   \[
+   \text{Feature maps } h \xrightarrow{\text{Residual Stack}} z_e.
+   \]
+
+Through this multi-stage process, the Encoder effectively captures essential latent features from the raw input images, laying the groundwork for quantization in the subsequent Vector Quantizer stage. The extraction of high-quality latent representations is crucial for achieving superior performance and fidelity in the resulting generative model.
+```

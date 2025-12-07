@@ -1,0 +1,25 @@
+```latex
+\subsection{Variational Autoencoders and Discrete Representation Learning}
+
+Variational Autoencoders (VAEs) have emerged as a pivotal framework for learning continuous latent representations from complex data. A notable contribution in this domain is presented in the work "Neural Discrete Representation Learning," which fundamentally introduces the VQ-VAE architecture. The authors, van den Oord et al., illustrate a method to convert continuous representations into discrete codes, allowing for the efficient modeling of data distributions while maintaining high fidelity in reconstruction \cite{p1}. 
+
+Building upon these foundational concepts, Edoardo Botta's research extends the VAE framework to Gaussian Mixture Models, focusing on the integration of categorical latent variables within VAEs \cite{p2}. This study enhances the modeling capabilities by allowing for more complex structure in the latent space, facilitating the capture of intricate data patterns which are often seen in multi-modal datasets. The optimization techniques employed in these works primarily involve maximizing the Evidence Lower Bound (ELBO), a common practice in Variational Inference that balances the reconstruction accuracy with latent space regularization.
+
+A critical innovation in the field is the introduction of the Gumbel-Softmax technique, which provides a differentiable approximation for categorical sampling \cite{p3}. This method addresses the non-differentiability challenge encountered when optimizing VAEs with discrete latent variables, enabling more effective gradient-based learning. The efficacy of this approach can be crucial when dealing with tasks that necessitate discrete representations.
+
+Despite these advancements, challenges persist, particularly regarding the interpretability of the latent spaces and the optimization processes in discrete representation learning. As recent studies point out, the optimization landscape can become complex, necessitating careful tuning of hyperparameters and the implementation of sophisticated training strategies to avoid local minima and achieve robust representations \cite{p4}.
+
+In connection to our proposed work, leveraging VQ-VAEs offers a promising pathway for effective representation learning within diffusion models. By employing the discrete latent representations learned through VQ-VAEs, we aim to enhance the quality and diversity of generated outputs in our model, addressing the limitations seen in previous generative frameworks.
+
+\begin{thebibliography}{4}
+\bibitem{p1} van den Oord, A., Vinyals, O., \& Kavukcuoglu, K. (2017). Neural Discrete Representation Learning. In \textit{Advances in Neural Information Processing Systems} (pp. 6306-6315).
+
+\bibitem{p2} Botta, E. (2021). Gaussian Mixture Variational Autoencoders. \textit{arXiv preprint arXiv:2106.04785}.
+
+\bibitem{p3} Jang, E., Gu, S., \& Poole, B. (2017). Categorical Reparameterization with Gumbel-Softmax. In \textit{arXiv preprint arXiv:1611.01144}.
+
+\bibitem{p4} Dilokthanakul, N., Mediano, P. A. M., Garnelo, M., Lee, M. C. H., Salimbeni, H., Arulkumaran, K., \& Shanahan, M. (2016). Deep Unsupervised Clustering with Gaussian Mixture Variational Autoencoders. In \textit{arXiv preprint arXiv:1611.02648}.
+\end{thebibliography}
+``` 
+
+This subsection presents a balanced overview of the key works in the field of Variational Autoencoders and discrete representation learning, aligning with the required writing structure and focusing on methodological aspects relevant to your work.

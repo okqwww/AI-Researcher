@@ -1,0 +1,112 @@
+```latex
+\section{Methodology: Enhanced VQ-VAE with RRT}
+This section presents our proposed architecture for Vector Quantized Variational Autoencoders (VQ-VAE) augmented by a Rotation-Rescaling Transform (RRT). The objective is to optimize gradient propagation through quantization layers, thereby improving both representation capability and reconstruction accuracy. The framework comprises three fundamental components: the Encoder, the Vector Quantizer, and the Decoder, which collaboratively transform input data into high-fidelity reconstructions.
+
+\[
+x \xrightarrow{\text{Encoder}} z_e \xrightarrow{\text{Quantizer}} z_q \xrightarrow{\text{Decoder}} \hat{x}
+\]
+
+\subsection{Encoder: Feature Extraction via CNN}
+The Encoder plays a critical role by converting raw images into compact and robust latent representations that are suitable for quantization. It efficiently extracts salient features from the input images, thereby enhancing model performance. These latent representations serve as crucial inputs for the Vector Quantizer, promoting effective dimensionality reduction while preserving key characteristics of the data.
+
+\textbf{Input:} Raw images ($x$);  
+\textbf{Output:} Latent representations ($z_e$).
+
+\subsubsection{Architectural Design}
+The Encoder is built upon a Convolutional Neural Network (CNN) architecture, which hierarchically captures spatial features from images. The primary components include:
+
+1. **Convolutional Layers**: Comprising multiple sequential convolutional operations, these layers capture intricate spatial patterns while progressively decreasing spatial dimensions and increasing the depth of feature maps. The output of the first convolutional layer is given by:
+
+   \[
+   z_1 = \text{ReLU}(\text{Conv2D}(x)),
+   \]
+
+   where \(z_1\) represents the feature maps derived from the application of the initial convolutional layer on the raw image \(x\).
+
+   \textbf{Workflow:}  
+   \[
+   x \xrightarrow{\text{Convolutional Layers}} h
+   \]
+
+2. **Residual Connections**: A Residual Stack is incorporated to enhance representation of complex features and mitigate gradient propagation issues associated with deeper architectures. The residual operation is represented as:
+
+   \[
+   z_e = h + F(h),
+   \]
+
+   where \(F(h)\) denotes the transformations applied by the residual block. This structure effectively addresses the vanishing gradient problem, facilitating effective training in deep networks.
+
+   \textbf{Workflow:}  
+   \[
+   h \xrightarrow{\text{Residual Stack}} z_e
+   \]
+
+3. **Gumbel-Softmax Sampling**: To optimize gradient propagation, Gumbel-Softmax sampling is employed during training. This technique generates discrete representations while maintaining a smooth loss landscape conducive to gradient-based optimization:
+
+   \[
+   y = \text{softmax}\left(\frac{\text{logits} + gumbel}{\text{temperature}}\right),
+   \]
+
+   where \(gumbel\) is drawn from a Gumbel distribution. This enhances gradient flow, significantly improving encoding effectiveness.
+
+By employing this structured pipeline, the Encoder successfully captures essential latent features from raw images, providing a sound basis for subsequent quantization processes. The integration of hierarchical convolutional layers, residual connections, and Gumbel-Softmax sampling significantly enhances the Encoder's capacity for optimized model performance and image quality.
+
+\subsection{Vector Quantizer: Discretization and Embedding}
+The Vector Quantizer (VQ) is a pivotal element of the proposed architecture, facilitating the discretization of continuous latent representations into distinct embeddings. This process allows the model to operate within a finite embedding set, thereby capturing structured representations essential for effective generative modeling.
+
+Central to this implementation is the Exponential Moving Average (EMA) technique, used for adaptively updating codebook embeddings, promoting stability in training dynamics and effective gradient propagation. Furthermore, the Rotation-Rescaling Transform (RRT) is introduced to enhance gradient transport through quantization layers, preserving angular relationships during backpropagation.
+
+\subsubsection{Quantization Mechanism}
+During the forward pass, the Vector Quantizer processes the latent representations \(z_e\) from the Encoder, yielding quantized outputs \(z_q\) and the quantization loss \( \text{vq\_loss} \):
+
+\[
+z_e \xrightarrow{\text{Quantizer}} z_q, \quad \text{vq\_loss}, \quad \text{stats}
+\]
+
+Here, \(z_q\) signifies the output from the VQ mechanism. The quantization loss consists of a commitment loss and codebook loss, which are crucial for training stability and effective embedding utilization. The statistics \( \text{stats} \) include metrics such as cluster utilization and perplexity, providing insights into the training performance.
+
+\subsubsection{Adaptive Embedding Updates}
+The quantization process utilizes an adaptive codebook of embeddings, updated based on their usage frequency via EMA techniques. This dynamic updating mechanism can be summarized as:
+
+\[
+\text{Updated Embeddings} \leftarrow \text{EMA}(z_e, \text{encoding indices})
+\]
+
+This method emphasizes the importance of frequently activated embeddings, enhancing model performance by refining the representation of salient features while diminishing the influence of less utilized embeddings.
+
+\subsubsection{Gradient Transport with RRT}
+To tackle the non-differentiability challenge of quantization, the Rotation-Rescaling Transform (RRT) is leveraged to facilitate gradient transport. Post-quantization, gradients are adjusted as follows:
+
+\[
+z_q \xrightarrow{\text{RRT}} \text{Transformed Gradients}
+\]
+
+The RRT employs Householder reflections, preserving the relationship between gradients and corresponding codebook vectors. This ensures effective gradient flow back to the Encoder, significantly enhancing training stability and efficiency.
+
+In summary, the Vector Quantizer is fundamental to our VQ-VAE framework, optimizing the discretization of latent representations and refining training dynamics through efficient embedding updates and advanced gradient transport techniques.
+
+\subsection{Decoder: High-Fidelity Reconstruction}
+The Decoder is essential for generating high-fidelity images from the quantized latent representations \(z_q\) obtained from the Vector Quantizer. Leveraging the learned features from the Encoder phase, the Decoder reconstructs outputs that faithfully replicate the original images in terms of visual fidelity and semantic relevance.
+
+\subsubsection{Architectural Framework}
+The Decoder primarily comprises transposed convolutional layers designed to progressively upscale the spatial dimensions of quantized representations while refining feature maps. Each layer utilizes learnable filters optimized through backpropagation, capturing essential spatial hierarchies in the data:
+
+\[
+z_q \xrightarrow{\text{Transposed Convolutional Layers}} \hat{h}
+\]
+
+Through this architecture, the Decoder systematically expands spatial dimensions, ensuring the retention of critical visual information. Additionally, the integration of residual connections within the Decoder improves backpropagation by allowing gradients to bypass certain layers, alleviating issues with vanishing gradients.
+
+\subsubsection{Output Layer for Final Reconstruction}
+The Output Layer is the final segment of the Decoder, synthesizing the refined intermediate feature maps into reconstructed images. This layer ensures that the outputs align with the original content regarding pixel dimensions and color formats.
+
+\[
+\hat{h} \xrightarrow{\text{Output Layer}} \hat{x}
+\]
+
+In the Output Layer, a sigmoid activation function is applied to constrain pixel values within the range [0, 1], critical for maintaining standard RGB formatting and ensuring high-fidelity outputs. The structured methodologies within the Decoder not only enhance reconstruction accuracy but also promote robustness and overall generative model performance.
+
+Further enhancing the Decoder's functionality is the application of the Rotation-Rescaling Transform (RRT). This mechanism improves gradient flow through quantization layers by preserving angular relationships among features, addressing challenges arising from non-differentiable conditions. By maintaining directional integrity, the RRT contributes to stable learning dynamics, thereby optimizing overall model performance.
+
+In conclusion, the Decoder's structured approach is instrumental in achieving high-quality image reconstruction, integrating advanced techniques that enhance the learning process and improve output quality within the generative framework.
+```

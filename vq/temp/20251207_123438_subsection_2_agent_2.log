@@ -1,0 +1,32 @@
+```latex
+\subsection{Decoder}
+The Decoder serves as a critical component of the proposed architecture, specializing in the reconstruction of high-fidelity images from the quantized latent representations produced by the Vector Quantizer. By harnessing the expressive latent features encoded during the modeling phase, the primary goal of the Decoder is to generate outputs that closely match the original input data, thereby satisfying the fundamental objectives of the generative modeling framework.
+
+\subsubsection{Convolutional Layers in Decoder}
+The architecture of the Decoder is primarily composed of a series of transposed convolutional layers, meticulously designed to incrementally restore the spatial dimensions of the input from the quantized representations. These layers progressively upscale and refine feature maps, ensuring that the generated outputs align with the original image dimensions. Each convolutional layer employs learnable filters, which are fine-tuned throughout the training process, enabling the model to effectively capture and reproduce the essential spatial hierarchies present in the data.
+
+\paragraph{Workflow:}
+\begin{align*}
+\text{Input:} & \quad \text{Quantized representations } (z_q)\\
+\text{Output:} & \quad \text{Intermediate feature maps for reconstruction } (\hat{h})\\
+\text{Processing:} & \quad z_q \xrightarrow{\text{Convolutional Layers}} \hat{h}
+\end{align*}
+
+The Decoder's design emphasizes the amplification of spatial dimensions while meticulously preserving critical visual information inherent in the input data. The incorporation of residual connections within this structure plays a significant role in enhancing gradient flow, which not only improves the reconstruction quality but also facilitates the effective training of deeper networks. Specifically, the residual stack, which consists of skip connections, allows gradients to bypass certain layers, thereby mitigating the vanishing gradient problem often encountered in deep learning architectures.
+
+\subsubsection{Output Layer}
+The culmination of the Decoder's operations is the Output Layer, which synthesizes the processed information from the preceding convolutional layers into the final reconstructed images. This layer is pivotal in ensuring that the outputs not only retain the content of the original images but also conform to the required pixel dimensions and format.
+
+\paragraph{Workflow:}
+\begin{align*}
+\text{Input:} & \quad \text{Intermediate feature maps } (\hat{h})\\
+\text{Output:} & \quad \text{Final reconstructed images } (\hat{x})\\
+\text{Processing:} & \quad \hat{h} \xrightarrow{\text{Output Layer}} \hat{x}
+\end{align*}
+
+In the Output Layer, a sigmoid activation function is applied, effectively confining the pixel values within the range [0, 1]. This normalization is critical for maintaining standard RGB formatting and ensuring the high fidelity of the final image outputs. The systematic organization and operation within the Decoder not only enhance reconstruction accuracy but also contribute significantly to the overall robustness and performance of the generative model.
+
+By effectively integrating learned quantized representations with advanced convolutional techniques, the Decoder adeptly translates abstract latent features into interpretable visual outputs. Furthermore, this collaboration significantly enhances the modeling capabilities of the Vector Quantized Variational Autoencoder (VQ-VAE) framework, particularly when bolstered by auxiliary methods such as the Rotation-Rescaling Transformation (RRT).
+
+The RRT is instrumental in improving gradient flow across quantization layers by implementing transformations that maintain angular relationships, thereby enabling more effective backpropagation in scenarios that might otherwise be non-differentiable. This innovative approach ensures more stable and efficient learning within the quantization process, ultimately contributing to the enhanced performance of the model overall.
+```

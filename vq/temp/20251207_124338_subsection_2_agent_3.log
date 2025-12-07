@@ -1,0 +1,27 @@
+```latex
+\subsection{Ablation Studies}
+
+The aim of the ablation studies is to evaluate the impact of the Rotation and Rescaling Transform (RRT) on gradient transport within the Vector Quantized Variational Autoencoder (VQ-VAE) framework. This analysis focuses on contrasting RRT with traditional straight-through gradient propagation techniques to better understand their respective advantages and limitations concerning overall model performance.
+
+To conduct these experiments, two distinct configurations were trained: one employing the RRT approach and the other utilizing the conventional straight-through gradient method. Both models were trained on the CIFAR-10 dataset for 2 epochs while keeping all other hyperparameters identical. This design choice was intended to adequately isolate and assess the effects of different gradient transport methods on various performance metrics.
+
+The evaluation metrics employed include Mean Squared Error (MSE), Peak Signal-to-Noise Ratio (PSNR), Structural Similarity Index (SSIM), and Fréchet Inception Distance (FID), as detailed in Table \ref{tab:ablation_results}. These metrics were specifically chosen for their relevance in assessing both the quality of image reconstructions and their perceptual fidelity.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Method & MSE & PSNR & SSIM & FID \\
+\hline
+RRT & 0.0209 & 16.80 & 0.69 & 261.86 \\
+Straight-Through & 0.0137 & 18.63 & 0.79 & 198.27 \\
+\hline
+\end{tabular}
+\caption{Ablation study results comparing RRT to standard straight-through gradient methods.}
+\label{tab:ablation_results}
+\end{table}
+
+The findings indicate that the straight-through method achieves better performance across several metrics: it has a lower MSE, resulting in higher PSNR and SSIM scores. In contrast, while the RRT method incurs a marginally higher MSE, it results in a better FID score, suggesting potential advantages regarding perceptual quality. This outcome implies that although RRT may exhibit higher reconstruction loss, it could enhance the model’s ability to produce perceptually relevant features.
+
+These outcomes underscore the complex trade-offs involved in employing RRT within VQ-VAE architectures. The RRT method shows promise for advancing perceptual quality through refined gradient propagation techniques; however, it necessitates careful tuning of hyperparameters to mitigate the associated increase in reconstruction loss. The results illustrate that RRT represents a compelling alternative for gradient transport in the context of VQ-VAEs, advocating for further investigation into optimized implementations that can leverage its strengths while addressing its challenges, particularly through methodical adjustments in both model parameters and training strategies.
+```

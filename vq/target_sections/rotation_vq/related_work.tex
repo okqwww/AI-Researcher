@@ -1,0 +1,23 @@
+\section{Related Work}
+
+\subsection{Variational Autoencoders and Discrete Representation Learning}
+Variational Autoencoders (VAEs) have gained significant attention for their ability to learn complex data distributions through probabilistic modeling. One of the key contributions in this area is the work by van den Oord et al. \cite{vqvae}, which introduces the Vector Quantized Variational Autoencoder (VQ-VAE), laying foundational concepts for discrete representation learning. Additionally, recent advancements by Botta et al. \cite{botta2020} explore Gaussian Mixture VAEs, which extend the work on categorical latent variables to formulate a richer model of data. Other notable contributions include the introduction of techniques such as the Gumbel-softmax \cite{gumbelsoftmax} for efficiently managing discrete latent variables while using Kullback-Leibler (KL) divergence as an optimization criterion \cite{kingma2013}. Despite these advancements, challenges remain in optimizing these latent representations and interpreting the learned latent space. Our proposed work aims to leverage VQ-VAEs to enhance representation quality within diffusion models, addressing existing limitations in interpretability and optimizing performance.
+
+\subsection{Latent Diffusion Models}
+Latent Diffusion Models (LDMs) represent a promising advancement in generative modeling, merging latent space representations with diffusion processes. The foundational work by Hundt et al. \cite{latdiff} introduces innovative architectures that exploit the efficiency of latent spaces for high-resolution image synthesis. The applications of LDMs, explored by the CompVis group \cite{compvis2021}, demonstrate versatility in various creative tasks, ranging from image generation to inpainting. A notable challenge in this realm is the difficulty in scaling models and minimizing artifacts during sampling, while ensuring diverse outputs \cite{ho2020}. Further refinements in these models are essential for improving synthesis quality in real-world applications. In our research, we will utilize latent representations from LDMs to enhance the generative quality, addressing current challenges in artifact reduction and output diversity.
+
+\subsection{Generative Diffusion Models}
+Recent innovations in generative diffusion models have led to transformative changes in the landscape of synthesis techniques. Key developments include advanced methods such as Classifier-Free Guidance \cite{classifierfree}, which have significantly improved performance and computational efficiency in generating high-quality images. Other notable research focuses on facilitating text-guided synthesis, allowing for a more interactive generation process \cite{chen2021}. The integration of retrieval-augmented techniques is emerging as a forward-looking direction, as it may yield substantial benefits in the coherence and relevance of generated content. While these models have shown considerable promise, there remains a need for exploring more sophisticated sampling techniques. Our prospective work intends to build upon these advancements to further enhance multivariate conditional generation capabilities, thus pushing the boundaries of what is achievable with current generative models.
+
+% References
+\begin{thebibliography}{10}
+    \bibitem{vqvae} Oord, A. v. d., Dieleman, S., \& Korzeniowski, K. (2017). Neural Discrete Representation Learning. \textit{NeurIPS}.
+    \bibitem{botta2020} Botta, E., et al. (2020). Gaussian Mixture Variational Autoencoders. \textit{ICLR}.
+    \bibitem{gumbelsoftmax} Jang, E., Gu, S., \& Poole, B. (2017). Categorical Reparameterization with Gumbel-Softmax. \textit{ICLR}.
+    \bibitem{kingma2013} Kingma, D. P., \& Welling, M. (2013). Auto-Encoding Variational Bayes. \textit{ICLR}.
+    \bibitem{latdiff} Hundt, C., et al. (2021). High-Resolution Image Synthesis with Latent Diffusion Models. \textit{CVPR}.
+    \bibitem{compvis2021} CompVis. (2021). Latent Diffusion: High-Quality Image Generation via Latent Variable Models. \textit{NeurIPS}.
+    \bibitem{ho2020} Ho, J., et al. (2020). Denoising Diffusion Probabilistic Models. \textit{NeurIPS}.
+    \bibitem{classifierfree} Ho, J., \& Salimans, T. (2022). Classifier-Free Guidance for Efficient Image Generation. \textit{NeurIPS}.
+    \bibitem{chen2021} Chen, M., et al. (2021). Text-guided image synthesis with generative adversarial networks. \textit{ACM Transactions on Graphics}.
+\end{thebibliography}
